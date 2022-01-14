@@ -1,0 +1,45 @@
+.sidebar {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+  background: #0d0d0d;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease-in-out;
+  display: grid;
+  align-items: center;
+}
+.sidebar--closed {
+  opacity: 0;
+  top: -100%;
+}
+.sidebar--open {
+  opacity: 1;
+  top: 0;
+}
+.sidebar__close-btn {
+  color: #fff;
+  font-size: 2rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(-100%, 60%);
+  cursor: pointer;
+}
+.sidebar__options {
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-rows: repeat(auto-fit, 80px);
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .sidebar__options {
+    grid-template-rows: repeat(auto-fit, 60px);
+  }
+}

@@ -1,0 +1,17 @@
+.user-events {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    justify-items: center;
+  }
+.events__payment-wrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+@media(max-width:768px){
+  .events__payment-wrapper{
+    flex-direction : column;
+  }
+}

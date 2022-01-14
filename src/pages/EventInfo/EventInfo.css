@@ -1,0 +1,12 @@
+.event {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(224px, 1fr));
+  gap: 24px;
+  margin: 48px 0;
+  padding: 24px;
+  background-origin: border-box;
+}
+.event__details {
+  display: flex;
+  gap: 24px;
+}

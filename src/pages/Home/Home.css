@@ -1,0 +1,40 @@
+.services {
+    /*margin: 2rem 0;*/
+    width: 100%;
+    display: flex;
+}
+
+.blog {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.callto {
+    background-image: -webkit-linear-gradient( 65deg, #FF0000 50%, #1b9fe9 50%);
+    margin-bottom: 0;
+    padding: 0 1rem;
+    color: white;
+}
+
+.callto__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/*RESPONSIVENESS*/
+
+@media screen and (max-width: 768px) {
+    .services {
+        flex-direction: column;
+    }
+    .blog__entries {
+        flex-direction: column;
+    }
+    .article {
+        flex-basis: 16rem;
+    }
+}

@@ -1,0 +1,57 @@
+.service {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18rem;
+  width: 33.33%;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 1s;
+}
+.service__title {
+  color: white;
+  z-index: 3;
+}
+.service__bg:hover {
+  transform: scale(1.2);
+}
+.service__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  );
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  transition: all 1s;
+  z-index: 2;
+}
+.service__bg::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0.2) 40%,
+    rgba(0, 0, 0, 0.7) 100%,
+    rgba(0, 0, 0, 0.9) 100%,
+    rgba(0, 0, 0, 1) 80%
+  );
+}
+/*ADD RESPONSIVENESS TO SERVICES*/
+@media screen and (max-width: 768px) {
+  .service {
+    width: 100%;
+  }
+}

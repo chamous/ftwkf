@@ -1,0 +1,153 @@
+/*GLOBAL VARIABLES*/
+
+:root {
+    --global-company-color: #2da9e0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+img {
+    width: 7%;
+}
+
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 1.1rem;
+}
+
+blockquote {
+    font-size: 2rem;
+    text-align: justify;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    cursor: pointer;
+}
+
+input {
+    box-sizing: border-box;
+}
+
+form {
+    width: 100%;
+}
+
+figure {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    padding: 8px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+
+
+/* UTILS */
+
+.btn {
+    border-radius: 6px;
+    white-space: nowrap;
+    width: fit-content;
+    padding: 0.6rem 1rem;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    font-weight: 600;
+}
+
+.btn--animated {
+    animation-delay: 1.2s !important;
+}
+
+.primary {
+    background: var(--global-company-color);
+    color: white;
+}
+
+.secondary {
+    background: white;
+    color: var(--global-company-color);
+}
+
+.primary:hover {
+    transition: all 200ms ease-out;
+    color: var(--global-company-color);
+    background: white;
+}
+
+.secondary:hover {
+    transition: all 200ms ease-out;
+    background: var(--global-company-color);
+    color: white;
+}
+
+.p-3 {
+    padding: 3rem 0;
+}
+
+.m-3 {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.txt-justify {
+    text-align: justify;
+}
+
+
+/*GENERAL QUERIES*/
+
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 2.6rem;
+    }
+}
+
+
+/*GLOBAL ANIMATIONS*/
+
+@keyframes showCard {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

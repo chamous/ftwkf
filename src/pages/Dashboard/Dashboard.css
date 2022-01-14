@@ -1,0 +1,22 @@
+.events__filter {
+  display: inline-block;
+}
+.custom-select {
+  margin: 8px;
+  display: inline;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+}
+.custom-select:active {
+  border: none;
+}
+.cards-wrapper {
+  width: 100%;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fill, 18rem);
+  justify-items: center;
+  justify-content: center;
+  margin: 24px 0;
+}

@@ -1,0 +1,27 @@
+.testimonials {
+  background-image: url(../../images/testimonials.jpg);
+  background-size: cover;
+  background-position: center center;
+  height: 400px;
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+.testimonials__wrapper {
+  padding: 2rem;
+}
+.testimonials__center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.6rem;
+}
+.testimonials__center p::before {
+  content: "-";
+}
+@media screen and (max-width: 768px) {
+  blockquote {
+    font-size: 1.6rem;
+  }
+}
