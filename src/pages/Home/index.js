@@ -4,7 +4,7 @@ import Footer from "../../components/Footer";
 import HeroSection from "../../components/HeroSection";
 import Navbar from "../../components/Navbar";
 import About from "../../components/About";
-import Features from "../../components/Features";
+import News from "../../components/News";
 import Testimonials from "../../components/Testimonials";
 import Service from "../../components/Service";
 import ImageCardio from "../../images/cardio.jpg";
@@ -32,7 +32,7 @@ const Home = () => {
           <Service title="Personal Trainer" imgUrl={ImageRun} />
           <Service title="Fitness Events" imgUrl={ImageTrainer} />
         </section>
-        <Features />
+        <News />
         <Testimonials />
 
         {/* BLOG ENTRIES */}

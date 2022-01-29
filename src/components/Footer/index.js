@@ -17,8 +17,8 @@ const Footer = () => {
         LinkR className = "navbar__title"
         to = "/" >
         Fit < span > Club < /span> <
-        p > Taking the Fitness to the next level < /p> <
-        /LinkR> <
+        p > Taking the Fitness to the next level < /p> < /
+        LinkR > <
         /div> <
         div className = "footer-wrapper__item" >
         <
@@ -26,8 +26,8 @@ const Footer = () => {
         a href = "/" > Talk to Us < /a> <
         a href = "/" > FAQ < /a> <
         a href = "/" > Information < /a> <
-        a href = "/" > Terms & Conditions < /a> <
-        /div> <
+        a href = "/" > Terms & Conditions < /a> < /
+        div > <
         /div> <
         div className = "footer-wrapper__items" >
         <
@@ -37,8 +37,8 @@ const Footer = () => {
         a href = "/" > Pricing < /a> <
         a href = "/" > Events < /a> <
         a href = "/" > Articles < /a> <
-        a href = "/" > Our Instructors < /a> <
-        /div> <
+        a href = "/" > Our Instructors < /a> < /
+        div > <
         div className = "footer-wrapper__item" >
         <
         h4 > Our Newsletter < /h4> <
@@ -46,19 +46,20 @@ const Footer = () => {
         <
         input placeholder = "Your Email" / >
         <
-        button className = "btn primary" > Subscribe < /button> <
-        /form> <
-        /div> <
-        /div> <
+        button className = "btn primary" > Subscribe < /button> < /
+        form > <
+        /div> < /
+        div > <
         /div>
 
         <
         div className = "footer-wrapper__copyright" >
         <
-        small > { date } & copy; FitClub Corp.All Rights Reserved < /small> <
-        /div> <
-        /div> <
-        /footer>
+        small > { date }
+        Ftwkf | All Rights Reserved < /small> < /
+        div > <
+        /div> < /
+        footer >
     );
 };
 
