@@ -17,7 +17,7 @@ const testimonials = [
   {
     user: "Laura Jhonson",
     testimonial:
-      "It is not just a fitness club, FitClub is part of my life. I love FitClub",
+      "It is not just a La Fédération, FitClub is part of my life. I love FitClub",
   },
 ];
 

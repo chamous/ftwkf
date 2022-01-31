@@ -4,12 +4,12 @@ import Footer from "../../components/Footer";
 import HeroSection from "../../components/HeroSection";
 import Navbar from "../../components/Navbar";
 import About from "../../components/About";
-import News from "../../components/News";
+import Nouveautés from "../../components/Nouveautés";
 import Testimonials from "../../components/Testimonials";
 import Service from "../../components/Service";
-import ImageCardio from "../../images/cardio.jpg";
-import ImageRun from "../../images/run.jpg";
-import ImageTrainer from "../../images/trainer.jpg";
+import ImageTaolo from "../../images/Taolo.gif";
+import ImageRun from "../../images/Sanda.gif";
+import ImageTrainer from "../../images/Taichi.gif";
 import ArticleOne from "../../images/post.jpg";
 import ArticleTwo from "../../images/post2.jpg";
 import ArticleThree from "../../images/post3.jpg";
@@ -28,16 +28,16 @@ const Home = () => {
       <main>
         <About />
         <section className="services">
-          <Service title="Cardio" imgUrl={ImageCardio} />
-          <Service title="Personal Trainer" imgUrl={ImageRun} />
-          <Service title="Fitness Events" imgUrl={ImageTrainer} />
+          <Service title="Taolu" imgUrl={ImageTaolo} />
+          <Service title="Sanda" imgUrl={ImageRun} />
+          <Service title="Taichi" imgUrl={ImageTrainer} />
         </section>
-        <News />
+        <Nouveautés />
         <Testimonials />
 
         {/* BLOG ENTRIES */}
         <section className="container blog">
-          <h2>Read Our Fitness Blog</h2>
+          <h2>Blog</h2>
           <div className="blog__entries">
             <Article
               bgImg={ArticleOne}

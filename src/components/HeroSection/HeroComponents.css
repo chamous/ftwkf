@@ -50,14 +50,17 @@
         grid-column: 1 / span 10;
         padding: 0 2rem;
     }
+
     .hero__text {
         font-size: 3rem;
         margin-bottom: 1rem;
     }
+
     .hero__wrapper h3 {
         font-size: 1.8rem;
         margin: 0;
     }
+
     .hero__wrapper p {
         font-size: 1.2rem;
     }
@@ -76,6 +79,7 @@
         opacity: 0;
         transform: translateY(-4rem);
     }
+
     100% {
         opacity: 1;
         transform: none;
@@ -87,6 +91,7 @@
         opacity: 0;
         transform: translateY(-4rem) scale(0.8);
     }
+
     100% {
         opacity: 1;
         transform: none;

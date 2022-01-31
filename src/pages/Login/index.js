@@ -73,9 +73,9 @@ const Login = ({ history }) => {
           <button className="btn primary">Submit</button>
           <button
             className="btn secondary"
-            onClick={() => history.push("/register")}
+            onClick={() => history.push("/Affiliation")}
           >
-            Not an user? Register
+            Not an user? Affiliation
           </button>
         </form>
       </section>

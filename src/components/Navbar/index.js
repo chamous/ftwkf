@@ -38,104 +38,104 @@ const Navbar = ({ toggle, isHome }) => {
     const homeLinks = () => {
         return ( < >
             <
-            li className = "navbar__link" >
-            <
-            LinkS to = "about"
-            smooth = { true }
-            duration = { 500 }
-            exact = "true"
-            offset = {-80 } > About Us < /LinkS>  < /
+            li className="navbar__link" >
+                <
+            LinkS to="about"
+                    smooth={true}
+                    duration={500}
+                    exact="true"
+                    offset={-80} > À propos de nous < /LinkS>  < /
             li > <
-            li className = "navbar__link" >
-            <
-            LinkS to = "News"
-            smooth = { true }
-            duration = { 500 }
-            exact = "true"
-            offset = {-80 } > News < /LinkS> </li > < />
-        )
+                        li className="navbar__link" >
+                        <
+            LinkS to="Nouveautés"
+                            smooth={true}
+                            duration={500}
+                            exact="true"
+                            offset={-80} > Nouveautés < /LinkS> </li > < />
+                    )
     }
     const newUserLinks = () => {
         return ( < >
-            <
-            li className = "navbar__link" >
-            <
-            LinkR to = "/login" > Log In < /LinkR>  < /
+                        <
+            li className="navbar__link" >
+                            <
+            LinkR to="/login" > Log In < /LinkR>  < /
             li > <
-            li className = "navbar__link" >
-            <
-            LinkR to = "/register" >
-            <
-            button className = "btn primary" > Register < /button>  < /
+            li className="navbar__link" >
+                                    <
+            LinkR to="/Affiliation" >
+                                        <
+            button className="btn primary" > Affiliation < /button>  < /
             LinkR > <
-            /li>  < / >
-        )
+            /li>  < />
+                                            )
     }
     const userLinks = () => {
         return ( < >
-            <
-            li className = "navbar__link" >
-            <
-            LinkR onClick = {
-                () => setNavbarStatus(false)
-            }
-            to = "/events" > Create Event < /LinkR>  < /
+                                                <
+            li className="navbar__link" >
+                                                    <
+            LinkR onClick={
+                                                            () => setNavbarStatus(false)
+                                                        }
+                                                        to="/events" > Create Event < /LinkR>  < /
             li > <
-            li className = "navbar__link dropdown" >
-            <
-            button className = "btn primary dropbtn" > My Account < /button>  <
-            div className = "dropdown-content" >
-            <
-            LinkR to = "/events" > Create Event < /LinkR>  <
-            LinkR to = "/user/events" > My Events < /LinkR> <
-            LinkR to = "/user/subscriptions" > My subscriptions < /LinkR>  <
-            LinkR onClick = { logOutUser } > Log Out < /LinkR>  < /
+            li className="navbar__link dropdown" >
+                                                            <
+            button className="btn primary dropbtn" > My Account < /button>  <
+            div className="dropdown-content" >
+                                                                    <
+            LinkR to="/events" > Create Event < /LinkR>  <
+            LinkR to="/user/events" > My Events < /LinkR> <
+            LinkR to="/user/subscriptions" > My subscriptions < /LinkR>  <
+            LinkR onClick={logOutUser} > Log Out < /LinkR>  < /
             div > <
-            /li>  < / >
-        )
+            /li>  < />
+                                                                                    )
     }
     useEffect(() => {
-        window.addEventListener("scroll", changeNav);
-        if (!navbarStatus) {
-            window.removeEventListener("scroll");
+                                                                                        window.addEventListener("scroll", changeNav);
+                                                                                    if (!navbarStatus) {
+                                                                                        window.removeEventListener("scroll");
         }
     }, [navbarStatus]);
-    return ( <
-        nav className = "navbar navbar--transparent" >
-        <
-        div className = "navbar__wrapper" >
-        <
-        ul className = "navbar__items" >
-        <
-        img src = "./logo-ftwkf.png" / >
-        <
-        li className = "navbar__title-wrapper" >
-        <
-        LinkR className = "navbar__title"
-        to = "/"
-        onClick = { toggleHome } >
-        <
+                                                                                    return ( <
+        nav className="navbar navbar--transparent" >
+                                                                                        <
+        div className="navbar__wrapper" >
+                                                                                            <
+        ul className="navbar__items" >
+                                                                                                <
+                                                                                                    img src="./logo-ftwkf.png" />
+                                                                                                <
+        li className="navbar__title-wrapper" >
+                                                                                                    <
+                                                                                                        LinkR className="navbar__title"
+                                                                                                        to="/"
+                                                                                                        onClick={toggleHome} >
+                                                                                                        <
         span > Federation Tunisienne < /span> </LinkR >
-        <
-        li className = "navbar__title-wrapper" >
-        <
-        LinkR className = "navbar__title1"
-        to = "/"
-        onClick = { toggleHome } >
-        <
+                                                                                                    <
+        li className="navbar__title-wrapper" >
+                                                                                                        <
+                                                                                                            LinkR className="navbar__title1"
+                                                                                                            to="/"
+                                                                                                            onClick={toggleHome} >
+                                                                                                            <
         span > de Wushu Kung Fu < /span> </LinkR >
-        <
+                                                                                                        <
         /li>  < /
-        li > { isHome && homeLinks() } { user ? userLinks() : newUserLinks() } <
+        li > {isHome && homeLinks()} {user ? userLinks() : newUserLinks()} <
         /ul> <
-        div className = "navbar__burger-icon"
-        onClick = { toggle } >
-        <
-        FaBars / >
-        <
+        div className="navbar__burger-icon"
+                                                                                                            onClick={toggle} >
+                                                                                                            <
+                                                                                                                FaBars />
+                                                                                                            <
         /div>  < /
         div > <
         /nav>
-    );
+                                                                                                            );
 };
-export default Navbar;
+                                                                                                            export default Navbar;
