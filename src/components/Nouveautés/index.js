@@ -11,23 +11,23 @@ const Nouveautés = () => {
       <h2 className="m-3">Nos Nouveautés</h2>
       <div className="Nouveautés">
         <div className="feature">
-          <img className="feature__img" src={calendario} alt="FitClub events" />
+          <img className="feature__img" src={calendario} alt="ftwkf events" />
           <h4>COOL EVENTS</h4>
         </div>
         <div className="feature">
           <img
             className="feature__img"
             src={salud}
-            alt="Medical Attention FitClub"
+            alt="Medical Attention ftwkf"
           />
           <h4>MEDICAL ATTENTION</h4>
         </div>
         <div className="feature">
-          <img className="feature__img" src={pesa} alt="FitClub Equipment" />
+          <img className="feature__img" src={pesa} alt="ftwkf Equipment" />
           <h4>EQUIPMENT</h4>
         </div>
         <div className="feature">
-          <img className="feature__img" src={ducha} alt="FitClub Showers" />
+          <img className="feature__img" src={ducha} alt="ftwkf Showers" />
           <h4>FREE SHOWERS</h4>
         </div>
       </div>

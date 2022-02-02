@@ -2,7 +2,7 @@ const testimonials = [
   {
     user: "Chris Torner",
     testimonial:
-      "The best 100%. Medical treatment is one of the best things of FitClub",
+      "The best 100%. Medical treatment is one of the best things of ftwkf",
   },
   {
     user: "Mike Richards",
@@ -17,7 +17,7 @@ const testimonials = [
   {
     user: "Laura Jhonson",
     testimonial:
-      "It is not just a La Fédération, FitClub is part of my life. I love FitClub",
+      "It is not just a La Fédération, ftwkf is part of my life. I love ftwkf",
   },
 ];
 

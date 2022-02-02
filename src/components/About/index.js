@@ -9,8 +9,8 @@ const About = () => {
         <img
           loading="lazy"
           src={aboutImg}
-          alt="FitClub About Ilustration"
-          aria-label="FitClub Image Example"
+          alt="ftwkf About Ilustration"
+          aria-label="ftwkf Image Example"
         />
       </figure>
       <header className="about__header">
