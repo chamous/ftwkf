@@ -64,7 +64,7 @@ const Navbar = ({ toggle, isHome }) => {
             li > <
             li className="navbar__link" >
                                     <
-            LinkR to="/Affiliation" >
+            LinkR to="/register" >
                                         <
             button className="btn primary" > Affiliation < /button>  < /
             LinkR > <

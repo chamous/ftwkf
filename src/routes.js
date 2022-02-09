@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "./pages/Login/";
 import Dashboard from "./pages/Dashboard/";
-import Affiliation from "./pages/Affiliation";
+import Register from "./pages/Register";
 import EventsPage from "./pages/EventsPage";
 import Home from "./pages/Home";
 import EventInfo from "./pages/EventInfo";
@@ -15,7 +15,7 @@ export const Routes = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/login" exact component={Login} />
-        <Route path="/Affiliation" exact component={Affiliation} />
+        <Route path="/register" exact component={Register} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/event/:id" exact component={EventInfo} />
         <Route path="/events" component={EventsPage} />

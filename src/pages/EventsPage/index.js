@@ -174,15 +174,15 @@ const EventsPage = ({ history }) => {
   ) : (
     <div aria-labelledby="main" className="new-event">
       <section className="new-event__section">
-        <h1>You are not Logged In please Log In or Affiliation</h1>
+        <h1>You are not Logged In please Log In or Register</h1>
         <button className="btn primary" onClick={() => history.push("/login")}>
           Log In
         </button>
         <button
           className="btn secondary"
-          onClick={() => history.push("/Affiliation")}
+          onClick={() => history.push("/register")}
         >
-          Affiliation
+          Register
         </button>
       </section>
     </div>

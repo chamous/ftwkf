@@ -1,0 +1,160 @@
+.navbar {
+    transition: all 400ms ease-in-out;
+    animation: fadeIn 1000ms;
+    position: sticky;
+    top: 0;
+    margin-top: -80px;
+    z-index: 1000;
+}
+
+.navbar__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 968px;
+    margin-right: auto;
+    margin-left: auto;
+    height: 80px;
+    padding: 0 2rem;
+}
+
+.navbar__items {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.navbar__title-wrapper {
+    flex: 1;
+}
+
+.navbar--transparent {
+    background-color: rgb(0 0 0 / 90%);
+}
+
+.navbar--active {
+    background-color: #0d0d0d;
+}
+
+.navbar__title {
+    font-size: 25px;
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar__title1 {
+    font-size: 20px;
+    color: rgb(218, 22, 22);
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.navbar__link {
+    margin-left: 24px;
+    cursor: pointer;
+}
+
+.navbar__links a {
+    transition: all 400ms ease-in-out;
+    margin-left: 1.4rem;
+    text-decoration: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+.navbar__links a:hover {
+    transition: all 100ms ease-out;
+    color: var(--global-company-color);
+}
+
+.navbar__links a:last-of-type {
+    border-radius: 4px;
+    background: var(--global-company-color);
+    width: fit-content;
+    padding: 8px 16px;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    z-index: 10;
+}
+
+.navbar__burger-icon {
+    display: none;
+}
+
+
+/*DROPDOWN*/
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--global-company-color);
+    min-width: 160px;
+    padding: 8px;
+    z-index: 1;
+    border-radius: 8px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.dropdown-content a {
+    border-radius: 8px;
+    padding: 8px;
+}
+
+.dropdown-content a:hover {
+    background-color: white;
+    color: var(--global-company-color);
+}
+
+.dropdown:hover .dropdown-content {
+    display: grid;
+    grid-template-rows: repeat(4, minmax(40px, 1fr));
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #fff;
+    color: var(--global-company-color);
+}
+
+
+/*Animations*/
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar__burger-icon {
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-100%, 60%);
+        font-size: 1.8rem;
+        cursor: pointer;
+        color: #fff;
+    }
+    .navbar__link {
+        display: none;
+    }
+}

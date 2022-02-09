@@ -59,9 +59,9 @@ const Home = () => {
 
         <div className="callto">
           <section className="container callto__wrapper">
-            <h2>Ready to get fit?</h2>
+            <h2>Notre calendrier</h2>
             <LinkR to="/dashboard/" className="btn secondary">
-              Our Events!
+            calendrier
             </LinkR>
           </section>
         </div>
