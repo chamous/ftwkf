@@ -1,7 +1,5 @@
 import React from "react";
 import "./HeroComponents.css";
-import { MdArrowForward } from "react-icons/md";
-import { Link as LinkR } from "react-router-dom";
 const HeroSection = () => {
     return ( <header className = "hero" >
         <div className = "container hero__wrapper" >

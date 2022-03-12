@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import { Link as LinkR } from "react-router-dom";
+import { Link as link } from "react-router-dom";
 const Footer = () => {
     const date = new Date().getFullYear();
     return (<footer>
