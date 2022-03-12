@@ -1,15 +1,15 @@
 import React from "react";
-import "./Nouveautés.css";
+import "./Nouveautes.css";
 import calendario from "../../assets/calendario.svg";
 import ducha from "../../assets/ducha.svg";
 import pesa from "../../assets/pesa.svg";
 import salud from "../../assets/salud.svg";
 
-const Nouveautés = () => {
+const Nouveautes = () => {
   return (
-    <section id="Nouveautés" className="container m-3 center">
-      <h2 className="m-3">Nos Nouveautés</h2>
-      <div className="Nouveautés">
+    <section id="Nouveautes" className="container m-3 center">
+      <h2 className="m-3">Nos Nouveautes</h2>
+      <div className="Nouveautes">
         <div className="feature">
           <img className="feature__img" src={calendario} alt="ftwkf events" />
           <h4>COOL EVENTS</h4>
@@ -26,13 +26,9 @@ const Nouveautés = () => {
           <img className="feature__img" src={pesa} alt="ftwkf Equipment" />
           <h4>EQUIPMENT</h4>
         </div>
-        <div className="feature">
-          <img className="feature__img" src={ducha} alt="ftwkf Showers" />
-          <h4>FREE SHOWERS</h4>
-        </div>
       </div>
     </section>
   );
 };
 
-export default Nouveautés;
+export default Nouveautes;

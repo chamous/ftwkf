@@ -21,7 +21,7 @@ const Sidebar = ({ isOpen, toggle, isHome }) => {
     return (
       <>
         <LinkS to="about" onClick={toggle}>À propos de nous</LinkS>
-        <LinkS to="Nouveautés" onClick={toggle}>Nouveautés</LinkS>
+        <LinkS to="Nouveautes" onClick={toggle}>Nouveautes</LinkS>
       </>
     )
   }

@@ -1,0 +1,29 @@
+svg {
+    margin-bottom: 80px;
+}
+
+.btn {
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.text {
+    user-select: none;
+    -webkit-font-smoothing: subpixel-antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.subCircle {
+    pointer-events: none;
+
+}
+
+.strokeW {
+    animation: strokeW .6s forwards;
+    @keyframes strokeW {
+        to {
+
+            stroke-width: 1.16;
+        }
+    }
+}

@@ -4,15 +4,14 @@ import Footer from "../../components/Footer";
 import HeroSection from "../../components/HeroSection";
 import Navbar from "../../components/Navbar";
 import About from "../../components/About";
-import Nouveautés from "../../components/Nouveautés";
-import Testimonials from "../../components/Testimonials";
+import Nouveautes from "../../components/Nouveautes";
 import Service from "../../components/Service";
 import ImageTaolo from "../../images/Taolo.gif";
 import ImageRun from "../../images/Sanda.gif";
 import ImageTrainer from "../../images/Taichi.gif";
-import ArticleOne from "../../images/post.jpg";
-import ArticleTwo from "../../images/post2.jpg";
-import ArticleThree from "../../images/post3.jpg";
+import ArticleOne from "../../images/post.png";
+import ArticleTwo from "../../images/post2.png";
+import ArticleThree from "../../images/post3.png";
 import Article from "../../components/Article/Article";
 import Sidebar from "../../components/Sidebar";
 import {useStateValue} from '../../services/StateProvider';
@@ -32,27 +31,26 @@ const Home = () => {
           <Service title="Sanda" imgUrl={ImageRun} />
           <Service title="Taichi" imgUrl={ImageTrainer} />
         </section>
-        <Nouveautés />
-        <Testimonials />
+        <Nouveautes />
 
         {/* BLOG ENTRIES */}
         <section className="container blog">
-          <h2>Blog</h2>
+          <h2>المراجع</h2>
           <div className="blog__entries">
             <Article
               bgImg={ArticleOne}
-              title="How to create your fitness routine"
-              author="John Smith"
+              title="Fédération internationale de wushu"
+              
             />
             <Article
               bgImg={ArticleTwo}
-              title="Living a healthy lifestyle is easy"
-              author="Carla Harvis"
+              title="Ministère de la Jeunesse et des Sports"
+              lien="ribatadvanced.ml"
             />
             <Article
               bgImg={ArticleThree}
-              title="Marathon Event rocked last sunday"
-              author="Joshua Arreola"
+              title="Comité national olympique tunisien"
+              author=""
             />
           </div>
         </section>

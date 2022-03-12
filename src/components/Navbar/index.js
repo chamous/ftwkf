@@ -48,11 +48,11 @@ const Navbar = ({ toggle, isHome }) => {
             li > <
                         li className="navbar__link" >
                         <
-            LinkS to="Nouveautés"
+            LinkS to="Nouveautes"
                             smooth={true}
                             duration={500}
                             exact="true"
-                            offset={-80} > Nouveautés < /LinkS> </li > < />
+                            offset={-80} > Nouveautes < /LinkS> </li > < />
                     )
     }
     const newUserLinks = () => {
