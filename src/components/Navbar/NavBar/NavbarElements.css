@@ -1,160 +1,121 @@
-.navbar {
-    transition: all 400ms ease-in-out;
-    animation: fadeIn 1000ms;
-    position: sticky;
-    top: 0;
-    margin-top: -80px;
-    z-index: 1000;
+.col_white_amrc {
+    color: #FFF;
 }
 
-.navbar__wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 968px;
-    margin-right: auto;
-    margin-left: auto;
-    height: 80px;
-    padding: 0 2rem;
-}
-
-.navbar__items {
-    padding: 0;
+footer {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    list-style: none;
+    background-color: #263238;
+    min-height: 250px;
+    padding: 10px 0px 25px 0px;
 }
 
-.navbar__title-wrapper {
-    flex: 1;
+.pt2 {
+    padding-top: 40px;
+    margin-bottom: 20px;
 }
 
-.navbar--transparent {
-    background-color: rgb(0 0 0 / 90%);
+footer p {
+    font-size: 13px;
+    color: #CCC;
+    padding-bottom: 0px;
+    margin-bottom: 8px;
 }
 
-.navbar--active {
-    background-color: #0d0d0d;
+.mb10 {
+    padding-bottom: 15px;
 }
 
-.navbar__title {
-    font-size: 25px;
-    color: white;
-    font-weight: 700;
-    text-decoration: none;
+.footer_ul_amrc {
+    margin: 0px;
+    list-style-type: none;
+    font-size: 14px;
+    padding: 0px 0px 10px 0px;
 }
 
-.navbar__title1 {
-    font-size: 20px;
-    color: rgb(218, 22, 22);
-    font-weight: 700;
-    text-decoration: none;
+.footer_ul_amrc li {
+    padding: 0px 0px 5px 0px;
 }
 
-.navbar__link {
-    margin-left: 24px;
-    cursor: pointer;
+.footer_ul_amrc li a {
+    color: #CCC;
 }
 
-.navbar__links a {
-    transition: all 400ms ease-in-out;
-    margin-left: 1.4rem;
-    text-decoration: none;
-    font-size: 1.2rem;
-    cursor: pointer;
+.footer_ul_amrc li a:hover {
     color: #fff;
+    text-decoration: none;
 }
 
-.navbar__links a:hover {
-    transition: all 100ms ease-out;
-    color: var(--global-company-color);
+.fleft {
+    float: left;
 }
 
-.navbar__links a:last-of-type {
-    border-radius: 4px;
-    background: var(--global-company-color);
-    width: fit-content;
-    padding: 8px 16px;
-    color: white;
-    font-size: 1rem;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    z-index: 10;
+.padding-right {
+    padding-right: 10px;
 }
 
-.navbar__burger-icon {
-    display: none;
+.footer_ul2_amrc {
+    margin: 0px;
+    list-style-type: none;
+    padding: 0px;
 }
 
-
-/*DROPDOWN*/
-
-.dropdown {
-    position: relative;
+.footer_ul2_amrc li p {
+    display: table;
 }
 
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: var(--global-company-color);
-    min-width: 160px;
+.footer_ul2_amrc li a:hover {
+    text-decoration: none;
+}
+
+.footer_ul2_amrc li i {
+    margin-top: 5px;
+}
+
+.bottom_border {
+    border-bottom: 1px solid #323f45;
+    padding-bottom: 20px;
+}
+
+.foote_bottom_ul_amrc {
+    list-style-type: none;
+    padding: 0px;
+    display: table;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-bottom: 10px;
+    margin-left: auto;
+}
+
+.foote_bottom_ul_amrc li {
+    display: inline;
+}
+
+.foote_bottom_ul_amrc li a {
+    color: #999;
+    margin: 0 12px;
+}
+
+.social_footer_ul {
+    display: table;
+    margin: 15px auto 0 auto;
+    list-style-type: none;
+}
+
+.social_footer_ul li {
+    padding-left: 20px;
+    padding-top: 10px;
+    float: left;
+}
+
+.social_footer_ul li a {
+    color: #CCC;
+    border: 1px solid #CCC;
     padding: 8px;
-    z-index: 1;
-    border-radius: 8px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    box-sizing: border-box;
+    border-radius: 50%;
 }
 
-.dropdown-content a {
-    border-radius: 8px;
-    padding: 8px;
-}
-
-.dropdown-content a:hover {
-    background-color: white;
-    color: var(--global-company-color);
-}
-
-.dropdown:hover .dropdown-content {
-    display: grid;
-    grid-template-rows: repeat(4, minmax(40px, 1fr));
-    align-items: center;
-    justify-content: center;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #fff;
-    color: var(--global-company-color);
-}
-
-
-/*Animations*/
-
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .navbar__burger-icon {
-        display: block;
-        position: absolute;
-        top: 0;
-        right: 0;
-        transform: translate(-100%, 60%);
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: #fff;
-    }
-    .navbar__link {
-        display: none;
-    }
+.social_footer_ul li i {
+    width: 20px;
+    height: 20px;
+    text-align: center;
 }
