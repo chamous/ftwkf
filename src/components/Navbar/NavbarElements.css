@@ -56,6 +56,7 @@
 .navbar__link {
     margin-left: 24px;
     cursor: pointer;
+    color: white !important;
 }
 
 .navbar__links a {
@@ -138,6 +139,7 @@
     0% {
         opacity: 0;
     }
+
     100% {
         opacity: 1;
     }
@@ -154,7 +156,17 @@
         cursor: pointer;
         color: #fff;
     }
+
     .navbar__link {
         display: none;
     }
+
+    .navbar__title , .navbar__title1{
+        font-size:1rem;
+    }
+}
+
+
+.sidebar__options a {
+    color: white;
 }

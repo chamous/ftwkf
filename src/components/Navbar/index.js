@@ -37,8 +37,8 @@ const Navbar = ({ toggle, isHome }) => {
     }
     const homeLinks = () => {
         return ( <>
-            <li className="navbar__link" ><LinkS to="about"smooth={true}duration={500}exact="true" offset={-80} > À propos de nous </LinkS>  </li>
-             <li className="navbar__link" ><LinkS to="Nouveautes"smooth={true}uration={500}exact="true"offset={-80} > Nouveautes </LinkS> </li> 
+            <li className="navbar__link" ><LinkR to="/about" > À propos de nous </LinkR>  </li>
+             <li className="navbar__link" ><LinkR to="/Nouveautes" > Nouveautes </LinkR> </li> 
              </>
   )
     }

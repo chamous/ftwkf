@@ -1,42 +1,38 @@
 import React from "react";
 import "./Footer.css";
-import { Link as link } from "react-router-dom";
+
 const Footer = () => {
     const date = new Date().getFullYear();
     return (<footer>
-                        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"></link>
-                        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-                        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous"></link>
-                        <footer class="footer">
+            <footer class="footer">
                         <div class="container bottom_border">
                         <div class="row">
-                        <div class=" col-sm-4 col-md col-sm-4  col-12 col">
-                        <h5 class="headin5_amrc col_white_amrc pt2">INFOS DE CONTACT</h5>
-                        <p class="mb10">La Fédération Tunisienne de Wushu Kung-Fu est en charge d’organiser et de développer la pratique du Wushu en Tunisie.</p>
-                        <p><i class="fa fa-location-arrow"></i> 17, rue Tallyrand - 2ème étage - Lafayette 1002 Tunis </p>
-                        <p><i class="fa fa-phone"></i>  (+216) 71 280 117  </p>
-                        <p><i class="fa fa fa-envelope"></i> fed.wushu@yahoo.fr  </p>
+                            <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+                            <h5 class="headin5_amrc col_white_amrc pt2">INFOS DE CONTACT</h5>
+                            <p class="mb10">La Fédération Tunisienne de Wushu Kung-Fu est en charge d’organiser et de développer la pratique du Wushu en Tunisie.</p>
+                            <p><i class="fa fa-location-arrow"></i> 17, rue Tallyrand - 2ème étage - Lafayette 1002 Tunis </p>
+                            <p><i class="fa fa-phone"></i>  (+216) 71 280 117  </p>
+                            <p><i class="fa fa fa-envelope"></i> fed.wushu@yahoo.fr  </p>
 
 
                         </div>
 
 
                         <div class=" col-sm-4 col-md  col-6 col">
-                        <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
-                        <ul class="footer_ul_amrc">
-                        <li><a href="http://www.cnot.org.tn">CNOT</a></li>
-                        <li><a href="http://www.sport.tn">Ministere de Jeunesse et de Sport</a></li>
-                        <li><a href="http://www.sport.tn">Fédération internationnale de Wushu Kung Fu</a></li>
-                        </ul>
+                            
+                            <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+                            <ul class="footer_ul_amrc">
+                                <li><a href="http://www.cnot.org.tn">CNOT</a></li>
+                                <li><a href="http://www.sport.tn">Ministere de Jeunesse et de Sport</a></li>
+                                <li><a href="http://www.iwuf.org">Fédération internationnale de Wushu Kung Fu</a></li>
+                            </ul>
                         </div>
                         <div class=" col-sm-4 col-md  col-12 col">
-                        <h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
-
-                        <ul class="footer_ul2_amrc">
-                        <li><a href="."><i class="fab fa-twitter fleft padding-right"></i> </a><p>Twiter : <a href=".">https://www.twiter.com/</a></p></li>
-                        <li><a href="."><i class="fab fab fa-instagram fleft padding-right"></i> </a><p>instagram : <a href=".">https://www.instagram.com/</a></p></li>
-                        </ul>
+                            <h5 class="headin5_amrc col_white_amrc pt2">Follow us</h5>
+                            <ul class="footer_ul2_amrc">
+                                <li><a href="."><i class="fab fa-twitter fleft padding-right"></i> </a><p>Twiter : <a href=".">https://www.twiter.com/</a></p></li>
+                                <li><a href="."><i class="fab fab fa-instagram fleft padding-right"></i> </a><p>Instagram : <a href=".">https://www.instagram.com/</a></p></li>
+                            </ul>
                         </div>
                         </div>
                         </div>
@@ -58,10 +54,7 @@ const Footer = () => {
                         </footer>
 
 
-                        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-                        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-             </footer>
+                                   </footer>
     );
 };
 

@@ -20,8 +20,8 @@ const Sidebar = ({ isOpen, toggle, isHome }) => {
   const homeLinks = () => {
     return (
       <>
-        <LinkS to="about" onClick={toggle}>À propos de nous</LinkS>
-        <LinkS to="Nouveautes" onClick={toggle}>Nouveautes</LinkS>
+        <LinkR to="about" onClick={toggle}>À propos de nous</LinkR>
+        <LinkR to="Nouveautes" onClick={toggle}>Nouveautes</LinkR>
       </>
     )
   }
