@@ -53,11 +53,6 @@ function RefusedCoachAffiliationList() {
             render: text => text.substr(0, 10)
         },
         {
-            title: 'Club',
-            dataIndex: ["club", "designation"],
-            key: 'designation',
-        },
-        {
             title: 'Grade',
             dataIndex: 'grade_coach',
             key: 'grade_coach',
@@ -334,7 +329,7 @@ function RefusedCoachAffiliationList() {
                                 </div>
                             </div>
                         </a>
-                        {selectedCoach["payment_url"] !== null ? <a href={`${baseUrlDownload}${selectedCoach["payment_url"]}`} target={"_blank"}>
+                        <a href={`${baseUrlDownload}${selectedCoach["payment_url"]}`} target={"_blank"}>
                             <div style={{
                                 display: "flex",
                                 alignItems: "center",
@@ -357,8 +352,6 @@ function RefusedCoachAffiliationList() {
                                 </div>
                             </div>
                         </a>
-                        :null
-                        }
 
                     </div>
 

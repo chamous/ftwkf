@@ -1,96 +1,39 @@
 import Interceptor from "../config/interceptor";
-import {
-    adminServicesUrls,
-    clubUrls
-} from "../config/api-constants";
+import {clubUrls} from "../config/api-constants";
 
 class ClubServices {
-    static getAthletes = ({
-        type: type,
-        name: name,
-        page: page
-    }) => Interceptor({
-        url: clubUrls.getAthletes,
-        params: {
-            page: page,
-            type: type,
-            search: name
-        }
-    })
-    static getAthletesClub = ({
-        page: page,
-        name: name
-    }) => Interceptor({
-        url: clubUrls.getAthletes,
-        params: {
-            page: page,
-            search: name
-        }
-    })
-
-    static getCoachsClub = ({
-            page,
-            cin
-        }) =>
-        Interceptor({
-            url: adminServicesUrls.getCoachAffiliationsEndPoint,
+    static getAthletes = ({type:type,name:name,page:page}) => Interceptor(
+        {
+            url: clubUrls.getAthletes,
             params: {
-                page: page,
-                search: cin
+                page:page,
+                type:type,
+                search:name
             }
-        })
-
-        static getAttendantClub = ({
-            page,
-            cin
-        }) =>
-        Interceptor({
-            url: clubUrls.getAttendants,
+        }
+    )
+    static getAthletesClub = ({page:page,name:name}) => Interceptor(
+        {
+            url: clubUrls.getAthletes,
             params: {
-                page: page,
-                search: cin
+                page:page,
+                search:name
             }
-        })
-        static AddAttendantApi = ({
+        }
+    )
+
+    static addAthlete = (
+        {
             firstName,
             lastName,
-            cinNumber,
-            governorate,
+            dateOfBirth,
+            sexe,
             image,
             file,
-        }, ) => new Promise((resolve, reject) => {
-            const bodyFormData = new FormData();
-            bodyFormData.append('first_name', firstName);
-            bodyFormData.append('last_name', lastName);
-            bodyFormData.append('cin', cinNumber);
-            bodyFormData.append('governorate', governorate);
-            bodyFormData.append('image', image);
-            bodyFormData.append('file', file);
-            Interceptor({
-                    url: clubUrls.addAttendant,
-                    method: 'POST',
-                    data: bodyFormData,
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                })
-                .then(async (response) => {
-                    resolve(response);
-                })
-                .catch((error) => {
-                    reject(error);
-                });
-        });
-    static addAthlete = ({
-        firstName,
-        lastName,
-        dateOfBirth,
-        sexe,
-        image,
-        file,
-        speciality,
-        grade
-    }, ) => new Promise((resolve, reject) => {
+            speciality,
+            grade
+        },
+      ) => new Promise((resolve, reject) => {
         const bodyFormData = new FormData();
         bodyFormData.append('first_name', firstName);
         bodyFormData.append('last_name', lastName);
@@ -101,21 +44,22 @@ class ClubServices {
         bodyFormData.append('specialty', speciality);
         bodyFormData.append('grade', grade);
         Interceptor({
-                url: clubUrls.addAthlete,
-                method: 'POST',
-                data: bodyFormData,
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            })
-            .then(async (response) => {
-                resolve(response);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
-    static updatePassword = ({
+          url: clubUrls.addAthlete,
+          method: 'POST',
+          data: bodyFormData,
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
+          .then(async (response) => {
+            resolve(response);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+      });
+    static updatePassword = (
+        {
             old_password,
             new_password,
             confirm_new_password,
@@ -123,13 +67,14 @@ class ClubServices {
         Interceptor({
             url: clubUrls.updatePassword,
             method: 'POST',
-            params: {
-                current_password: old_password,
-                password: new_password,
-                password_confirmation: confirm_new_password,
+            params:{
+                current_password:old_password,
+                password:new_password,
+                password_confirmation:confirm_new_password,
             }
         })
-    static resetPassword = ({
+    static resetPassword = (
+        {
             token,
             email,
             password,
@@ -138,15 +83,13 @@ class ClubServices {
         Interceptor({
             url: clubUrls.resetPassword,
             method: 'POST',
-            params: {
-                token: token,
-                email: email,
-                password: password,
-                password_confirmation: passwordConfirmation,
+            params:{
+                token:token,
+                email:email,
+                password:password,
+                password_confirmation:passwordConfirmation,
             }
         })
-
-        
 
 }
 

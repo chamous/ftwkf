@@ -1,36 +1,71 @@
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {toast, Toaster} from "react-hot-toast";
 import ClubServices from "../../../services/club-services";
+import { listSpeciality,listGrade } from './constants'
 
 const  AddAthlete= ()=> {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [birthday, setBirthday] = useState('');
     const [gender, setGender] = useState('');
+    const [file, setFile] = useState('');
+    const [pdf, setPdf] = useState('');
+    const [image, setImage] = useState('');
+    const [speciality, setSpeciality] = useState('');
+    const [grade, setGrade] = useState('');
+    const [specialityList] = useState(listSpeciality);
+    const [gradeList] = useState(listGrade);
+    const pdfInputRef = useRef();
+    const imageInputRef = useRef();
+
     const handleReset = () => {
         // state
         setFirstName('');
         setLastName('');
         setBirthday('');
-        setGender('')
+        setGender('');
+        setPdf('');
+        setImage('')
+        pdfInputRef.current.value = null;
+        imageInputRef.current.value = null;
     };
     const genderList = [
         {
             id:1,
-            name:"Male",
+            name:"إختر",
         },
         {
             id:2,
-            name:"femelle",
+            name:"ذكر",
+        },
+        {
+            id:3,
+            name:"أنثى",
         }
     ]
     const handleSelectGender = (event) => {
         const data = genderList.find((o) => `${o?.name}` === event?.target?.value);
         setGender(data?.name);
     };
+    const handleSelectFile = (event) => {
+        setFile(event.target.files[0])
+        setImage(URL.createObjectURL(event.target.files[0]));
+    };
+    const handleSelectPdf = (event) => {
+        setPdf(event.target.files[0])
+    };
     const handleSubmit = async (evt) => {
         ClubServices.addAthlete(
-            {firstName:firstName,lastName:lastName,sexe:gender,dateOfBirth:birthday}
+            {
+                firstName:firstName,
+                lastName:lastName,
+                sexe:gender,
+                dateOfBirth:birthday,
+                image:file,
+                file:pdf,
+                speciality:speciality,
+                grade:grade
+            }
         ).then((r)=>{
             handleReset();
             toast.success('Ajout avec succès');
@@ -39,10 +74,18 @@ const  AddAthlete= ()=> {
         })
         evt.preventDefault();
     };
+    const handleSelectSpeciality = (event) => {
+        const data = specialityList.find((o) => `${o?.name}` === event?.target?.value);
+        setSpeciality(data?.name);
+    };
+    const handleSelectGrade = (event) => {
+        const data = gradeList.find((o) => `${o?.name}` === event?.target?.value);
+        setGrade(data?.name);
+    };
     return (
         <form inline className="form-style-8" onSubmit={handleSubmit}>
             <div className="input-container">
-                <label>Prénom</label>
+                <label>الإسم</label>
                 <input
                     required
                     type="text"
@@ -53,7 +96,7 @@ const  AddAthlete= ()=> {
                 />
             </div>
             <div className="input-container">
-                <label>Nom</label>
+                <label>اللقب</label>
                 <input
                     required
                     type="text"
@@ -64,7 +107,7 @@ const  AddAthlete= ()=> {
                 />
             </div>
             <div className="input-container">
-                <label>Date de naissance</label>
+                <label>تاريخ الولادة</label>
                 <input
                     type="date"
                     required
@@ -76,7 +119,7 @@ const  AddAthlete= ()=> {
             </div>
 
             <div className="input-container">
-                <label>Sexe</label>
+                <label>الجنس</label>
                 <select value={gender} id="mySelect" onChange={handleSelectGender}>
                     {genderList.map((item) => (
                         <option key={item?.id} value={item.name}>
@@ -85,6 +128,68 @@ const  AddAthlete= ()=> {
                     ))}
                 </select>
             </div>
+            <div className="input-container">
+                <label>الإختصاص</label>
+                <select value={speciality} id="speciality" onChange={handleSelectSpeciality}>
+                    <option selected key="-1" value={null}>
+                        إختيار
+                    </option>
+                    {specialityList.map((item) => (
+                      <option key={item?.id} value={item.name}>
+                          {item?.name}
+                      </option>
+                    ))}
+                </select>
+            </div>
+            <div className="input-container">
+                <label>رتبة اللاعب </label>
+                <select value={grade} id="grade" onChange={handleSelectGrade}>
+                    <option selected key="-1" value={null}>
+                        إختيار
+                    </option>
+                    {gradeList.map((item) => (
+                      <option key={item?.id} value={item.name}>
+                          {item?.name}
+                      </option>
+                    ))}
+                </select>
+            </div>
+            <div className="input-container">
+                <div className="file-label">
+                    <label>وثيقة (جواز سفر، بطاقة تعريف)</label>
+                </div>
+                <div style={{display: 'flex',marginRight:20 }}>
+                    <input
+                        type="file"
+                        id="filepdf"
+                        onChange={handleSelectPdf}
+                        ref={pdfInputRef}
+                    />
+                </div>
+            </div>
+            <div className="input-container">
+            <div style={{display:'flex',flexDirection:'row'}}>
+                <div className="input-container">
+                    <div className="file-label">
+                        <label>صورة شمسية </label>
+                    </div>
+                    <div style={{display: 'flex',marginRight:20 }}>
+                        <input
+                            type="file"
+                            id="file"
+                            onChange={handleSelectFile}
+                            ref={imageInputRef}
+                        />
+                    </div>
+                </div>
+                <img src={image} style={{
+                    width:100,
+                    height:100,
+                    display:image!==''?'flex':'none',
+                    objectFit: 'cover'
+                }}/>
+            </div>
+      </div>
             <Toaster position="bottom-right" />
             <div style={{
                 width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -100,4 +205,3 @@ const  AddAthlete= ()=> {
 }
 
 export default AddAthlete;
-

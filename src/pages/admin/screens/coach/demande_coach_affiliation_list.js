@@ -53,11 +53,6 @@ function DemandeCoachAffiliationList() {
             render: text => text.substr(0, 10)
         },
         {
-            title: 'Club',
-            dataIndex: ["club", "designation"],
-            key: 'designation',
-        },
-        {
             title: 'Grade',
             dataIndex: 'grade_coach',
             key: 'grade_coach',
@@ -74,7 +69,7 @@ function DemandeCoachAffiliationList() {
                 return <div style={{display: "flex", justifyContent: 'space-around', alignItems: "center"}}>
                     <Popconfirm title="Réfuser la demande?" onConfirm={() => {
                         AdminServices
-                            .refuseCoach(data).then(r => {
+                            .updateAffiliationCoach(data, false).then(r => {
                             getData({cin: search, page: pageNumber})
                         }).catch((e) => {
                             console.log(e)
@@ -97,9 +92,8 @@ function DemandeCoachAffiliationList() {
                     <Popconfirm
                         title="Accepter la demande?"
                         onConfirm={() => {
-
                             AdminServices
-                                .acceptCoach(data).then(r => {
+                                .updateAffiliationCoach(data, true).then(r => {
                                 getData({cin: search, page: pageNumber})
                             }).catch((e) => {
                                 console.log(e)
@@ -394,7 +388,7 @@ function DemandeCoachAffiliationList() {
                                 </div>
                             </div>
                         </a>
-                        {selectedCoach["payment_url"] !== null ? <a href={`${baseUrlDownload}${selectedCoach["payment_url"]}`} target={"_blank"}>
+                        {selectedCoach["payment_url"] != undefined ?? <a href={`${baseUrlDownload}${selectedCoach["payment_url"]}`} target={"_blank"}>
                             <div style={{
                                 display: "flex",
                                 alignItems: "center",
@@ -416,9 +410,7 @@ function DemandeCoachAffiliationList() {
                                     <p style={{margin: 0, color: "white"}}>Télécharger le reçu de payement</p>
                                 </div>
                             </div>
-                        </a>
-                        :null
-                        }
+                        </a>}
                     </div>
 
                 </div>

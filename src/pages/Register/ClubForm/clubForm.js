@@ -1,16 +1,14 @@
-import React, { useEffect, useState ,useRef} from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 import { toast, Toaster } from 'react-hot-toast';
 import { listSpeciality } from './constants'
 import { affiliationClub, getDelegation, getGov } from '../../../services/affiliationServices';
-import {isArabic,isNumber,isArabicAndNumber,isEmail}  from '../../../helpers'
 
 function ClubForm() {
   const [loading, setLoading] = useState(false);
   const [designation, setDesignation] = useState('');
   const [assuranceNumber, setAssuranceNumber] = useState('');
   const [assuranceDate, setAssuranceDate] = useState('');
-  const [imageRuler, setImageRuler] = useState('');
   const [governorate, setGovernorate] = useState({});
   const [governorateList, setGovernorateList] = useState([]);
   const [specialityList] = useState(listSpeciality);
@@ -52,7 +50,6 @@ function ClubForm() {
   const [diplomeUrl, setDiplomeUrl] = useState('');
   const [certificateUrl, setCertificateUrl] = useState('');
   const [file, setFile] = useState('');
-  const imageRulerRef = useRef();
 
   useEffect(() => {
     getGov().then((response) => {
@@ -71,10 +68,6 @@ function ClubForm() {
   const handleSelectFile = (event) => {
     setFile(event.target.files[0]);
   };
-  const handleSelectImageRuler = (event) => {
-    setImageRuler(event.target.files[0]);
-  };
-
   const handleReset = () => {
     setDesignation('');
     setAssuranceNumber('');
@@ -82,7 +75,6 @@ function ClubForm() {
     setGovernorate({});
     setGovernorateList([]);
     setDelegation({});
-    setImageRuler('')
     setDelegationList([]);
     setEmail('');
     setPostalCode('');
@@ -118,9 +110,7 @@ function ClubForm() {
     document.getElementById('diplome').value = '';
     document.getElementById('certificat').value = '';
     document.getElementById('file').value = '';
-    imageRulerRef.current = '';
   };
-
   const handleSubmit = async (evt) => {
     affiliationClub(
       {
@@ -159,7 +149,6 @@ function ClubForm() {
         diplomeUrl,
         certificateUrl,
         file,
-        imageRuler
       },
     ).then((response) => {
       if (response.status === 201) {
@@ -175,12 +164,14 @@ function ClubForm() {
     evt.preventDefault();
   };
   const handleSelectGov = (event) => {
+    setLoading(true);
     const data = governorateList.find((o) => `${o?.name}` === event?.target?.value);
     setGovernorate(data?.name);
     console.log(`call ws : id:${data?.id}`, `name: ${data?.name}`);
     getDelegation(data?.id).then((response) => {
       setDelegation(response?.data?.[0]?.name);
       setDelegationList(response?.data);
+      setLoading(false);
     }).catch((error) => {
       console.log(error);
     });
@@ -188,11 +179,6 @@ function ClubForm() {
   const handleSelectSpeciality = (event) => {
     const data = specialityList.find((o) => `${o?.name}` === event?.target?.value);
     setSpeciality(data?.name);
-  };
-
-  const handleSelectSpecialityRuler = (event) => {
-    const data = specialityList.find((o) => `${o?.name}` === event?.target?.value);
-    setSpecialityRuler(data?.name);
   };
 
   const handleSelectDelegation = (event) => {
@@ -222,22 +208,18 @@ function ClubForm() {
           name="designation"
           value={designation}
           id="designation"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setDesignation(evt.target.value):setDesignation(prev =>prev)
-          }}
+          onChange={(evt) => setDesignation(evt.target.value)}
         />
       </div>
       <div className="input-container">
         <label>رقم التأمين</label>
         <input
           required
-          type="number"
+          type="text"
           name="assurance_number"
           value={assuranceNumber}
           id="assurance_number"
-          onChange={(evt) =>{
-            isNumber(evt.target.value)|| evt.target.value ==="" ? setAssuranceNumber(evt.target.value):setAssuranceNumber(prev =>prev)
-        }}
+          onChange={(evt) => setAssuranceNumber(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -271,7 +253,7 @@ function ClubForm() {
           إختيار
           </option>
           {delegationList.map((item) => (
-            <option key={item?.id} value={item.name}>
+            <option key={item?.id} value={item.id}>
               {item?.name}
             </option>
           ))}
@@ -298,7 +280,7 @@ function ClubForm() {
           name="email"
           value={email}
           id="email"
-          onChange={(evt) => setEmail(evt.target.value.toLowerCase())}
+          onChange={(evt) => setEmail(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -309,9 +291,7 @@ function ClubForm() {
           name="postal_code"
           id="postal_code"
           value={postalCode}
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length < 5) || evt.target.value ==="" ? setPostalCode(evt.target.value):setPostalCode(prev =>prev)
-          }}
+          onChange={(evt) => setPostalCode(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -322,9 +302,7 @@ function ClubForm() {
           name="phone"
           value={phone}
           id="phone"
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length < 9) || evt.target.value ==="" ? setPhone(evt.target.value):setPhone(prev =>prev)
-          }}
+          onChange={(evt) => setPhone(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -335,9 +313,7 @@ function ClubForm() {
           name="fax"
           value={fax}
           id="fax"
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length < 9) || evt.target.value ==="" ? setFax(evt.target.value):setFax(prev =>prev)
-          }}
+          onChange={(evt) => setFax(evt.target.value)}
         />
       </div>
 
@@ -349,9 +325,7 @@ function ClubForm() {
           name="first_name_president"
           value={firstNamePresident}
           id="first_name_president"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setFirstNamePresident(evt.target.value):setFirstNamePresident(prev =>prev)
-          }}
+          onChange={(evt) => setFirstNamePresident(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -362,9 +336,7 @@ function ClubForm() {
           name="last_name_president"
           value={lastNamePresident}
           id="last_name_president"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setLastNamePresident(evt.target.value):setLastNamePresident(prev =>prev)
-          }}
+          onChange={(evt) => setLastNamePresident(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -375,9 +347,7 @@ function ClubForm() {
           name="cin_number_president"
           id="cin_number_president"
           value={cinNumberPresident}
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length <9) || evt.target.value ==="" ? setCinNumberPresident(evt.target.value):setCinNumberPresident(prev =>prev)
-          }}
+          onChange={(evt) => setCinNumberPresident(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -399,9 +369,7 @@ function ClubForm() {
           name="place_cin_president"
           id="place_cin_president"
           value={cinPlacePresident}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setCinPlacePresident(evt.target.value):setCinPlacePresident(prev =>prev)
-          }}
+          onChange={(evt) => setCinPlacePresident(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -412,9 +380,7 @@ function ClubForm() {
           name="address_president"
           id="address_president"
           value={addressPresident}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setAddressPresident(evt.target.value):setAddressPresident(prev =>prev)
-          }}
+          onChange={(evt) => setAddressPresident(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -425,9 +391,7 @@ function ClubForm() {
           name="postal_code_president"
           id="postal_code_president"
           value={postalCodePresident}
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length < 5) || evt.target.value ==="" ? setPostalCodePresident(evt.target.value):setPostalCodePresident(prev =>prev)
-          }}
+          onChange={(evt) => setPostalCodePresident(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -438,24 +402,20 @@ function ClubForm() {
           name="phone_president"
           value={phonePresident}
           id="phone_president"
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length < 9) || evt.target.value ==="" ? setPhonePresident(evt.target.value):setPhonePresident(prev =>prev)
-          }}
+          onChange={(evt) => setPhonePresident(evt.target.value)}
         />
       </div>
-        <div className="input-container">
-            <label>إختصاص المسير</label>
-            <select value={specialityRuler} id="specialty_ruler" onChange={handleSelectSpecialityRuler}>
-                <option selected key="-1" value={null}>
-                    إختيار
-                </option>
-                {specialityList.map((item) => (
-                    <option key={item?.id} value={item.name}>
-                        {item?.name}
-                    </option>
-                ))}
-            </select>
-        </div>
+      <div className="input-container">
+        <label>إختصاص المسير</label>
+        <input
+          type="text"
+          required
+          name="specialty_ruler"
+          id="specialty_ruler"
+          value={specialityRuler}
+          onChange={(evt) => setSpecialityRuler(evt.target.value)}
+        />
+      </div>
       <div className="input-container">
         <label>إسم المسير</label>
         <input
@@ -464,9 +424,7 @@ function ClubForm() {
           name="first_name_ruler"
           value={firstNameRuler}
           id="first_name_ruler"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setFirstNameRuler(evt.target.value):setFirstNameRuler(prev =>prev)
-          }}
+          onChange={(evt) => setFirstNameRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -477,9 +435,7 @@ function ClubForm() {
           name="last_name_ruler"
           value={lastNameRuler}
           id="last_name_ruler"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setLastNameRuler(evt.target.value):setLastNameRuler(prev =>prev)
-          }}
+          onChange={(evt) => setLastNameRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -501,9 +457,7 @@ function ClubForm() {
           name="place_birth_ruler"
           value={placeBirthRuler}
           id="place_birth_ruler"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setPlaceBirthRuler(evt.target.value):setPlaceBirthRuler(prev =>prev)
-          }}
+          onChange={(evt) => setPlaceBirthRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -514,9 +468,7 @@ function ClubForm() {
           name="nationality_ruler"
           id="nationality_ruler"
           value={nationalityRuler}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setNationalityRuler(evt.target.value):setNationalityRuler(prev =>prev)
-          }}
+          onChange={(evt) => setNationalityRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -527,9 +479,7 @@ function ClubForm() {
           name="cin_number_ruler"
           id="cin_number_ruler"
           value={cinNumberRuler}
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length <9) || evt.target.value ==="" ? setCinNumberRuler(evt.target.value):setCinNumberRuler(prev =>prev)
-          }}
+          onChange={(evt) => setCinNumberRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -551,9 +501,7 @@ function ClubForm() {
           name="place_cin_ruler"
           id="place_cin_ruler"
           value={cinPlaceRuler}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setCinPlaceRuler(evt.target.value):setCinPlaceRuler(prev =>prev)
-          }}
+          onChange={(evt) => setCinPlaceRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -564,9 +512,7 @@ function ClubForm() {
           name="level_study_ruler"
           id="level_study_ruler"
           value={levelStudyRuler}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setLevelStudyRuler(evt.target.value):setLevelStudyRuler(prev =>prev)
-          }}
+          onChange={(evt) => setLevelStudyRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -577,9 +523,7 @@ function ClubForm() {
           name="profession_ruler"
           id="profession_ruler"
           value={professionRuler}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setProfessionRuler(evt.target.value):setProfessionRuler(prev =>prev)
-          }}
+          onChange={(evt) => setProfessionRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -590,9 +534,7 @@ function ClubForm() {
           name="address_ruler"
           id="address_ruler"
           value={addressRuler}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setAddressRuler(evt.target.value):setAddressRuler(prev =>prev)
-          }}
+          onChange={(evt) => setAddressRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -603,9 +545,7 @@ function ClubForm() {
           name="postal_code_ruler"
           id="postal_code_ruler"
           value={postalCodeRuler}
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length < 5) || evt.target.value ==="" ? setPostalCodeRuler(evt.target.value):setPostalCodeRuler(prev =>prev)
-          }}
+          onChange={(evt) => setPostalCodeRuler(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -616,24 +556,9 @@ function ClubForm() {
           name="phone_ruler"
           value={phoneRuler}
           id="phone_ruler"
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length < 9) || evt.target.value ==="" ? setPhoneRuler(evt.target.value):setPhoneRuler(prev =>prev)
-          }}
+          onChange={(evt) => setPhoneRuler(evt.target.value)}
         />
       </div>
-      <div className="input-container">
-                    <div className="file-label">
-                        <label>صورة المسير</label>
-                    </div>
-                    <div style={{display: 'flex',marginRight:20 }}>
-                        <input
-                            type="file"
-                            id="file"
-                            onChange={handleSelectImageRuler}
-                            ref={imageRulerRef}
-                        />
-                    </div>
-                </div>
       <div className="input-container">
         <div className="file-label">
           <label>كراس الشروط / الرائد الرسمي (PDF)</label>
@@ -652,6 +577,9 @@ function ClubForm() {
           <input
             type="file"
             id="certificat"
+                        // accept={acceptedExtensions}
+                        // ref={inputFileRef}
+                        // style={{ display: 'none' }}
             onChange={handleCertificatSelect}
           />
         </div>
@@ -664,6 +592,9 @@ function ClubForm() {
                 <input
                     type="file"
                     id="file"
+                    // accept={acceptedExtensions}
+                    // ref={inputFileRef}
+                    // style={{ display: 'none' }}
                     onChange={handleSelectFile}
                 />
             </div>

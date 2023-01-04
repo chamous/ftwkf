@@ -28,27 +28,15 @@ import RefusedCoachAffiliationList from "./pages/admin/screens/coach/refused_coa
 import AthleteAffiliationList from "./pages/admin/screens/athlete/athlete_affiliation_list";
 import RefusedAthleteAffiliationList from "./pages/admin/screens/athlete/refused_athlete_affiliation_list";
 import DemandeAthleteAffiliationList from "./pages/admin/screens/athlete/demande_athlete_affiliation_list";
-import ListAthlete from "./pages/club/screens/athlete/list_athlete";
-import AddAthlete from "./pages/club/screens/athlete/add_athlete";
+import ListAthlete from "./pages/club/screens/list_athlete";
+import AddAthlete from "./pages/club/screens/add_athlete";
 import UpdatePassword from "./pages/club/screens/update_password";
-import CoachForm from "./pages/club/screens/coach/CoachForm/coachForm";
-import { useSelector } from 'react-redux';
-import ListCoachs from './pages/club/screens/coach/list_coachs';
-import AddAttendant from './pages/club/screens/attendant/add_attendant';
-import ListAttendants from './pages/club/screens/attendant/list_attendants';
-import AttendantAcceptedList from './pages/admin/screens/attendant/accpted_attendant_list';
-import AttendantDemandList from './pages/admin/screens/attendant/demand_attendant_list';
-import AttendantRefusedList from './pages/admin/screens/attendant/refused_attendant_list';
-import SupporterAcceptedList from './pages/admin/screens/supporter/accpted_supporter_list';
-import SupporterDemandList from './pages/admin/screens/supporter/demand_supporter_list';
-import SupporterRefusedList from './pages/admin/screens/supporter/refused_supporter_list';
 
 export function Routes() {
-    const loading = useSelector(state => state?.loader?.loading);
     return (
         <BrowserRouter>
             <UseScrollToTop/>
-            <div id="cover-spin" style={{display:loading ? 'flex':'none'}}></div>
+            <div id="cover-spin"></div>
             <Switch>
                 <Route path="/" exact component={Home}>
                     <IsLoggedInRoute/>
@@ -108,28 +96,6 @@ export function Routes() {
                 <Route path="/admin/affiliation/athlete/refused" component={<RefusedAthleteAffiliationList/>}>
                     <ProtectedAdminRoutes children={<RefusedAthleteAffiliationList/>}/>
                 </Route>
-                {/*Admin Attendant*/}
-                <Route path="/admin/attendant/accepted" component={<AttendantAcceptedList/>}>
-                    <ProtectedAdminRoutes children={<AttendantAcceptedList/>}/>
-                </Route>
-                <Route path="/admin/attendant/demand" component={<AttendantDemandList/>}>
-                    <ProtectedAdminRoutes children={<AttendantDemandList/>}/>
-                </Route>
-
-                <Route path="/admin/attendant/refused" component={<AttendantRefusedList/>}>
-                    <ProtectedAdminRoutes children={<AttendantRefusedList/>}/>
-                </Route>
-                {/*Admin supporter*/}
-                <Route path="/admin/supporter/accepted" component={<SupporterAcceptedList/>}>
-                    <ProtectedAdminRoutes children={<SupporterAcceptedList/>}/>
-                </Route>
-                <Route path="/admin/supporter/demand" component={<SupporterDemandList/>}>
-                    <ProtectedAdminRoutes children={<SupporterDemandList/>}/>
-                </Route>
-
-                <Route path="/admin/supporter/refused" component={<SupporterRefusedList/>}>
-                    <ProtectedAdminRoutes children={<SupporterRefusedList/>}/>
-                </Route>
                 {/*Admin Posts*/}
                 <Route path="/admin/posts/add" component={<AddPost/>}>
                     <ProtectedAdminRoutes children={<AddPost/>}/>
@@ -140,23 +106,11 @@ export function Routes() {
                 <Route path="/club/athlete/list" component={<ListAthlete/>}>
                     <ProtectedAdminRoutes children={<ListAthlete/>}/>
                 </Route>
-                <Route path="/club/coach/list" component={<ListCoachs/>}>
-                    <ProtectedAdminRoutes children={<ListCoachs/>}/>
-                </Route>
-                <Route path="/club/attendant/list" component={<ListAttendants/>}>
-                    <ProtectedAdminRoutes children={<ListAttendants/>}/>
-                </Route>
                 <Route path="/club/athlete/add" component={<AddAthlete/>}>
                     <ProtectedAdminRoutes children={<AddAthlete/>}/>
                 </Route>
-                <Route path="/club/attendant/add" component={<AddAttendant/>}>
-                    <ProtectedAdminRoutes children={<AddAttendant/>}/>
-                </Route>
                 <Route path="/club/update-password" component={<UpdatePassword/>}>
                     <ProtectedAdminRoutes children={<UpdatePassword/>}/>
-                </Route>
-                <Route path="/club/coach/add" component={<CoachForm/>}>
-                    <ProtectedAdminRoutes children={<CoachForm/>}/>
                 </Route>
                 <Route path="/api/reset-password">
                     <ProtectedAdminRoutes children={<UpdatePassword/>}/>

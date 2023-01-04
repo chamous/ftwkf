@@ -24,7 +24,7 @@ const Login = () => {
                 if (response?.data?.user?.role === 'admin') {
                     history.replace('/admin/affiliation/clubs/affiliated');
                 } else if (response?.data?.user?.role === 'club') {
-                    history.replace('/club/athlete/list');
+                    history.replace('/admin/affiliation/athlete/affiliated');
                 }
             } else {
                 console.log('error', response);

@@ -3,7 +3,6 @@ import './style.css';
 import { toast, Toaster } from 'react-hot-toast';
 import { affiliationArbitrator } from '../../../services/affiliationServices';
 import { listGradeArbitrator,listSpeciality } from './constants'
-import {isArabic,isNumber,isArabicAndNumber,isEmail}  from '../../../helpers'
 
 function CoachForm() {
   const [gradeArbitratorList] = useState(listGradeArbitrator);
@@ -122,9 +121,7 @@ function CoachForm() {
           name="first_name"
           value={firstName}
           id="firstName"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setFirstName(evt.target.value):setFirstName(prev =>prev)
-          }}
+          onChange={(evt) => setFirstName(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -135,9 +132,7 @@ function CoachForm() {
           name="last_name"
           value={lastName}
           id="last_name"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setLastName(evt.target.value):setLastName(prev =>prev)
-          }}
+          onChange={(evt) => setLastName(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -159,9 +154,7 @@ function CoachForm() {
           name="place_birth"
           value={birthdayPlace}
           id="place_birth"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setBirthdayPlace(evt.target.value):setBirthdayPlace(prev =>prev)
-          }}
+          onChange={(evt) => setBirthdayPlace(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -185,9 +178,7 @@ function CoachForm() {
           name="nationality"
           id="nationality"
           value={nationality}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setNationality(evt.target.value):setNationality(prev =>prev)
-          }}
+          onChange={(evt) => setNationality(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -198,9 +189,7 @@ function CoachForm() {
           name="cin_number"
           id="cin_number"
           value={cinNumber}
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length <9) || evt.target.value ==="" ? setCinNumber(evt.target.value):setCinNumber(prev =>prev)
-          }}
+          onChange={(evt) => setCinNumber(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -222,9 +211,7 @@ function CoachForm() {
           name="place_cin"
           id="place_cin"
           value={cinPlace}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setCinPlace(evt.target.value):setCinPlace(prev =>prev)
-          }}
+          onChange={(evt) => setCinPlace(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -235,9 +222,7 @@ function CoachForm() {
           name="level_study"
           value={levelStudy}
           id="level_study"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setLevelStudy(evt.target.value):setLevelStudy(prev =>prev)
-          }}
+          onChange={(evt) => setLevelStudy(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -248,9 +233,7 @@ function CoachForm() {
           name="profession"
           id="profession"
           value={profession}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setProfession(evt.target.value):setProfession(prev =>prev)
-          }}
+          onChange={(evt) => setProfession(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -261,9 +244,7 @@ function CoachForm() {
           name="address"
           id="address"
           value={address}
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setAddress(evt.target.value):setAddress(prev =>prev)
-          }}
+          onChange={(evt) => setAddress(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -274,9 +255,7 @@ function CoachForm() {
           name="postal_code"
           id="postal_code"
           value={postalCode}
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length < 5) || evt.target.value ==="" ? setPostalCode(evt.target.value):setPostalCode(prev =>prev)
-          }}
+          onChange={(evt) => setPostalCode(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -287,9 +266,7 @@ function CoachForm() {
           name="phone"
           value={phone}
           id="phone"
-          onChange={(evt) => {
-              (isNumber(evt.target.value) && evt.target.value.length < 9) || evt.target.value ==="" ? setPhone(evt.target.value):setPhone(prev =>prev)
-          }}
+          onChange={(evt) => setPhone(evt.target.value)}
         />
       </div>
       <div className="input-container">
@@ -311,9 +288,7 @@ function CoachForm() {
           name="technical_grade"
           value={technicalGrade}
           id="technical_grade"
-          onChange={(evt) => {
-              isArabic(evt.target.value) || evt.target.value ==="" ? setTechnicalGrade(evt.target.value):setTechnicalGrade(prev =>prev)
-          }}
+          onChange={(evt) => setTechnicalGrade(evt.target.value)}
         />
       </div>
       <div className="input-container">

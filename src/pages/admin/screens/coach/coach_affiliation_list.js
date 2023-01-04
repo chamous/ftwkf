@@ -54,11 +54,6 @@ function CoachAffiliationList() {
             render: text => text.substr(0, 10)
         },
         {
-            title: 'Club',
-            dataIndex: ["club", "designation"],
-            key: 'designation',
-        },
-        {
             title: 'Grade',
             dataIndex: 'grade_coach',
             key: 'grade_coach',
@@ -333,30 +328,7 @@ function CoachAffiliationList() {
                                 </div>
                             </div>
                         </a>
-                        <a href={`${baseUrlDownload}${selectedCoach["diplome_url"]}`} target={"_blank"}>
-                            <div style={{
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center", marginBottom: 20
-                            }}
-                            >
-                                <div style={{
-                                    width: 380,
-                                    height: 40,
-                                    borderRadius: 10,
-                                    backgroundColor: "#002140",
-                                    position: "relative",
-                                    display: 'flex',
-                                    alignItems: "center",
-                                    justifyContent: 'center',
-                                    cursor: "pointer"
-                                }}>
-                                    <img style={{position: 'absolute', left: 20}} src={download}/>
-                                    <p style={{margin: 0, color: "white"}}>Télécharger le diplome</p>
-                                </div>
-                            </div>
-                        </a>
-                        {selectedCoach["payment_url"] != null ? <a href={`${baseUrlDownload}${selectedCoach["payment_url"]}`} target={"_blank"}>
+                        {selectedCoach["payment_url"] != undefined ?? <a href={`${baseUrlDownload}${selectedCoach["payment_url"]}`} target={"_blank"}>
                             <div style={{
                                 display: "flex",
                                 alignItems: "center",
@@ -378,8 +350,7 @@ function CoachAffiliationList() {
                                     <p style={{margin: 0, color: "white"}}>Télécharger le reçu de payement</p>
                                 </div>
                             </div>
-                        </a>:null}
-
+                        </a>}
 
                     </div>
 

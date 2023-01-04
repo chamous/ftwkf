@@ -104,14 +104,13 @@
     cursor: pointer;
 }
 .tab:hover{
+    background-color: #2CBBBB;
     border: none;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     -ms-transition: all 0.5s ease;
     transition: all 0.5s ease;
-    background-color: var(--global-company-color);
-    border: solid 1px var(--global-company-color);
 }
 .active-tab{
     display:flex;

@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import './style.css';
 import { toast, Toaster } from 'react-hot-toast';
 import { affiliationCoach } from '../../../services/affiliationServices';
-
+import { gradeCoachList,technicalGradeList } from './constants'
+import { listSpeciality } from './constants'
 function CoachForm() {
+  const [listGradeCoach] = useState(gradeCoachList);
+  const [listTechnicalGrade] = useState(technicalGradeList);
+  const [specialityList] = useState(listSpeciality);
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthday, setBirthday] = useState('');
@@ -24,11 +28,29 @@ function CoachForm() {
   const [gradeCoach, setGradeCoach] = useState('');
   const [diplomeUrl, setDiplomeUrl] = useState('');
   const [certificateUrl, setCertificateUrl] = useState();
+  const [paymentUrl, setPaymentUrl] = useState();
+
   const handleCertificatSelect = (event) => {
     setCertificateUrl(event.target.files[0]);
   };
   const handleDiplomeSelect = (event) => {
     setDiplomeUrl(event.target.files[0]);
+  };
+  const handlePaymentSelect = (event) => {
+      setPaymentUrl(event.target.files[0]);
+  };
+  const handleSelectTechnicalGrade = (event) => {
+    const data = listTechnicalGrade.find((o) => `${o?.name}` === event?.target?.value);
+    setTechnicalGrade(data?.name);
+  };
+  const handleSelectCoachGrade = (event) => {
+    const data = listGradeCoach.find((o) => `${o?.name}` === event?.target?.value);
+    setGradeCoach(data?.name);
+  };
+
+  const handleSelectSpeciality = (event) => {
+    const data = specialityList.find((o) => `${o?.name}` === event?.target?.value);
+    setSpeciality(data?.name);
   };
   const handleReset = () => {
     // state
@@ -52,9 +74,11 @@ function CoachForm() {
     setGradeCoach('');
     setDiplomeUrl('');
     setCertificateUrl('');
+    setPaymentUrl('');
     // reset files
     document.getElementById('diplome').value = '';
     document.getElementById('certificat').value = '';
+    document.getElementById('payment').value = '';
   };
   const handleSubmit = async (evt) => {
     affiliationCoach({
@@ -78,6 +102,7 @@ function CoachForm() {
       gradeCoach,
       diplomeUrl,
       certificationUrl: certificateUrl,
+      paymentUrl: paymentUrl,
     }).then((response) => {
       if (response.status === 201) {
         handleReset();
@@ -94,7 +119,7 @@ function CoachForm() {
   return (
     <form inline className="form-style-8" onSubmit={handleSubmit}>
       <div className="input-container">
-        <label>Prénom</label>
+      <label>الإسم</label>
         <input
           required
           type="text"
@@ -105,7 +130,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Nom</label>
+      <label>اللقب</label>
         <input
           required
           type="text"
@@ -116,7 +141,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Date de naissance</label>
+      <label>تاريخ الولادة</label>
         <input
           type="date"
           required
@@ -127,7 +152,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Lieu de naissance</label>
+      <label>مكان الولادة</label>
         <input
           type="text"
           required
@@ -138,18 +163,20 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Spécialité</label>
-        <input
-          type="text"
-          required
-          name="specialty"
-          id="specialty"
-          value={speciality}
-          onChange={(evt) => setSpeciality(evt.target.value)}
-        />
+        <label>الإختصاص</label>
+        <select value={speciality} id="speciality" onChange={handleSelectSpeciality}>
+          <option selected key="-1" value={null}>
+            إختيار
+          </option>
+          {specialityList.map((item) => (
+            <option key={item?.id} value={item.name}>
+              {item?.name}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="input-container">
-        <label>Nationalité</label>
+      <label>الجنسية</label>
         <input
           type="text"
           required
@@ -160,7 +187,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>CIN</label>
+      <label>رقم بطاقة التعريف الوطنية</label>
         <input
           type="number"
           required
@@ -171,7 +198,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Date CIN</label>
+      <label>تاريخ الإصدار</label>
         <input
           type="date"
           required
@@ -182,7 +209,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Lieu CIN</label>
+      <label>مكان الإصدار</label>
         <input
           type="text"
           required
@@ -193,7 +220,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Niveau d'éducation</label>
+      <label>المستوى التعليمي</label>
         <input
           type="text"
           required
@@ -204,7 +231,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Profession</label>
+      <label>العمل</label>
         <input
           type="text"
           required
@@ -215,7 +242,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Address</label>
+      <label>العنوان</label>
         <input
           type="text"
           required
@@ -226,7 +253,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Code postal</label>
+      <label>الترقيم البريدي</label>
         <input
           type="text"
           required
@@ -237,7 +264,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Téléphone</label>
+      <label>رقم الهاتف</label>
         <input
           type="number"
           required
@@ -248,7 +275,7 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>E-mail</label>
+      <label>البريد الإلكتروني</label>
         <input
           type="email"
           required
@@ -259,18 +286,20 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Grade technique</label>
-        <input
-          type="text"
-          required
-          name="technical_grade"
-          value={technicalGrade}
-          id="technical_grade"
-          onChange={(evt) => setTechnicalGrade(evt.target.value)}
-        />
+        <label>الرتبة الفنية</label>
+        <select value={technicalGrade} id="technical_grade" onChange={handleSelectTechnicalGrade}>
+          <option selected key="-1" value={null}>
+            إختيار
+          </option>
+          {listTechnicalGrade.map((item) => (
+            <option key={item?.id} value={item.name}>
+              {item?.name}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="input-container">
-        <label>Date d'obtention du grade</label>
+      <label>تاريخ التحصل على الرتبة الفنية</label>
         <input
           type="date"
           required
@@ -281,53 +310,59 @@ function CoachForm() {
         />
       </div>
       <div className="input-container">
-        <label>Grade entraineur</label>
-        <input
-          type="text"
-          required
-          name="grade_arbitrator"
-          id="grade_arbitrator"
-          value={gradeCoach}
-          onChange={(evt) => setGradeCoach(evt.target.value)}
-        />
+        <label>رتبة المدرب</label>
+        <select value={gradeCoach} id="grade_coach" onChange={handleSelectCoachGrade}>
+          <option selected key="-1" value={null}>
+            إختيار
+          </option>
+          {listGradeCoach.map((item) => (
+            <option key={item?.id} value={item.name}>
+              {item?.name}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="input-container">
         <div className="file-label">
-          <label>Diplome</label>
+        <label>شهادة الرتبة الفنية (PDF)</label>
         </div>
         <input
           type="file"
           id="diplome"
           onChange={handleDiplomeSelect}
         />
-        {/* <ReactFileInputCustom */}
-        {/*    text={'téléverser un fichier'} */}
-        {/*    acceptedExtensions={'pdf'} */}
-        {/*    handleChange={handleDiplomeSelect}/> */}
       </div>
       <div className="input-container">
         <div className="file-label">
-          <label>Certificat</label>
+        <label>شهادة التدريب (PDF)</label>
         </div>
         <div style={{ width: '50%', display: 'flex' }}>
           <input
             type="file"
             id="certificat"
-                        // accept={acceptedExtensions}
-                        // ref={inputFileRef}
-                        // style={{ display: 'none' }}
             onChange={handleCertificatSelect}
           />
         </div>
       </div>
+      <div className="input-container">
+            <div className="file-label">
+                <label>عقد التدريب (PDF)</label>
+            </div>
+            <div style={{ width: '50%', display: 'flex' }}>
+                <input
+                    type="file"
+                    id="payment"
+                    onChange={handlePaymentSelect}
+                />
+            </div>
+        </div>
       <Toaster position="bottom-right" />
       <div style={{
         width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
-      }}
-      >
-        <button type="submit" className="btn primary">Ajouter</button>
+      }}>
+        <button type="submit" className="btn primary">التأكيد</button>
         <div style={{ width: '50px' }} />
-        <button className="btn primary" onClick={handleReset}>Reset</button>
+        <button className="btn primary" onClick={handleReset}>مسح و إعادة</button>
       </div>
 
     </form>

@@ -5,8 +5,6 @@ import {useLocation} from "react-router-dom";
 import download from "../../../../assets/download.png";
 import { baseUrlDownload } from '../../../../config/api-constants';
 
-import { Image } from 'antd';
-
 const  ClubAffiliationList= ()=> {
     const [data, setData] = useState()
     const location = useLocation();
@@ -46,14 +44,6 @@ const  ClubAffiliationList= ()=> {
             title: 'Prénom de dirigeant',
             dataIndex: 'first_name_ruler',
             key: 'first_name_ruler',
-        },
-        {
-            title: 'Photo',
-            dataIndex: 'image_ruler',
-            key: 'image_ruler',
-            render: (img) => {
-                return img?<Image style={{width:100,height:100}} src={`${baseUrlDownload}${img}`}/>:<div>Aucun photo</div>
-            }
         },
         {
             title: 'Designation',
