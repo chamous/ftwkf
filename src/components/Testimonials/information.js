@@ -1,23 +1,23 @@
 const testimonials = [
   {
-    user: "Chris Torner",
+    user: 'Chris Torner',
     testimonial:
-      "The best 100%. Medical treatment is one of the best things of ftwkf",
+      'The best 100%. Medical treatment is one of the best things of FitClub',
   },
   {
-    user: "Mike Richards",
+    user: 'Mike Richards',
     testimonial:
-      "A place for all ages, events are definitely the best, totally worth it..",
+      'A place for all ages, events are definitely the best, totally worth it..',
   },
   {
-    user: "Josue Arreola",
+    user: 'Josue Arreola',
     testimonial:
-      "I love this place! Not too expensive, not boring, and woah the events",
+      'I love this place! Not too expensive, not boring, and woah the events',
   },
   {
-    user: "Laura Jhonson",
+    user: 'Laura Jhonson',
     testimonial:
-      "It is not just a La Fédération, ftwkf is part of my life. I love ftwkf",
+      'It is not just a fitness club, FitClub is part of my life. I love FitClub',
   },
 ];
 

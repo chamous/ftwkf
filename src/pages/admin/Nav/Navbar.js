@@ -5,6 +5,7 @@ import {
 } from '@ant-design/icons';
 import React from 'react';
 import {Link} from "react-router-dom";
+import AdminServices from "../../../services/admin-services";
 
 const {
     Header, Content, Sider,
@@ -16,11 +17,83 @@ export default class Navbar extends React.Component {
     state = {
         collapsed: false,
     };
+    linkRef = React.createRef();
 
     onCollapse = (collapsed) => {
         console.log(collapsed);
         this.setState({collapsed});
     };
+    handleExportLicence = (type) => {
+        switch (type) {
+            case 'coach':
+                AdminServices.exportCoach().then(response =>{
+                    console.log('coach response : ',response);
+                    //Create a Blob from the PDF Stream
+                    const file = new Blob(
+                        [response.data],
+                        {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+                    //Build a URL from the file
+                     const fileURL = URL.createObjectURL(file);
+
+                    console.log(fileURL);
+                    //Open the URL on new Window
+                    window.open(fileURL);
+                }).catch(e => {
+                    console.log('coach err',e);
+                });
+                break;
+            case 'athlete':
+                AdminServices.exportAthlete().then(response =>{
+                    console.log('athlete response : ',response);
+                    //Create a Blob from the PDF Stream
+                    const file = new Blob(
+                        [response.data],
+                        {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+                    //Build a URL from the file
+                    const fileURL = URL.createObjectURL(file);
+
+                    console.log(fileURL);
+                    //Open the URL on new Window
+                    window.open(fileURL);
+                }).catch(e => {
+                    console.log('athlete err',e);
+                });
+                break;
+            case 'ruler':
+                AdminServices.exportRuler().then(response =>{
+                    console.log('coach response : ',response);
+                    //Create a Blob from the PDF Stream
+                    const file = new Blob(
+                        [response.data],
+                        {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+                    //Build a URL from the file
+                    const fileURL = URL.createObjectURL(file);
+
+                    console.log(fileURL);
+                    //Open the URL on new Window
+                    window.open(fileURL);
+                }).catch(e => {
+                    console.log('coach err',e);
+                });
+                break;
+            default:
+                AdminServices.exportRuler().then(response =>{
+                    console.log('coach response : ',response);
+                    //Create a Blob from the PDF Stream
+                    const file = new Blob(
+                        [response.data],
+                        {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+                    //Build a URL from the file
+                    const fileURL = URL.createObjectURL(file);
+
+                    console.log(fileURL);
+                    //Open the URL on new Window
+                    window.open(fileURL);
+                }).catch(e => {
+                    console.log('coach err',e);
+                });
+        }
+    }
 
     render() {
         const {collapsed} = this.state;
@@ -38,40 +111,59 @@ export default class Navbar extends React.Component {
                             Affiliation
                         </Menu.Item>
                         <SubMenu key="sub1" icon={<UserOutlined/>} title="Clubs">
-                            <Menu.Item key="1"><Link to={'/admin/affiliation/clubs/1'}>Déja affiliés</Link></Menu.Item>
-                            <Menu.Item key="2"><Link to={'/admin/affiliation/clubs/2'}>Demandes</Link></Menu.Item>
-                            <Menu.Item key="3"><Link to={'/admin/affiliation/clubs/3'}>Refusées</Link></Menu.Item>
+                            <Menu.Item key="1"><Link to={'/admin/affiliation/clubs/affiliated'}>Déja affiliés</Link></Menu.Item>
+                            <Menu.Item key="2"><Link to={'/admin/affiliation/clubs/demand'}>Demandes</Link></Menu.Item>
+                            <Menu.Item key="3"><Link to={'/admin/affiliation/clubs/refused'}>Refusées</Link></Menu.Item>
                         </SubMenu>
                         <SubMenu key="sub2" icon={<UserOutlined/>} title="Entraineurs">
-                            <Menu.Item key="4"><Link to={'/admin/affiliation/coach/1'}>Déja affiliés</Link></Menu.Item>
-                            <Menu.Item key="5"><Link to={'/admin/affiliation/coach/2'}>Demandes</Link></Menu.Item>
-                            <Menu.Item key="6"><Link to={'/admin/affiliation/coach/3'}>Refusées</Link></Menu.Item>
+                            <Menu.Item key="4"><Link to={'/admin/affiliation/coach/affiliated'}>Déja affiliés</Link></Menu.Item>
+                            <Menu.Item key="5"><Link to={'/admin/affiliation/coach/demand'}>Demandes</Link></Menu.Item>
+                            <Menu.Item key="6"><Link to={'/admin/affiliation/coach/refused'}>Refusées</Link></Menu.Item>
                         </SubMenu>
                         <SubMenu key="sub3" icon={<UserOutlined/>} title="Arbitres">
-                            <Menu.Item key="7"><Link to={'/admin/affiliation/arbitrator/1'}>Déja
+                            <Menu.Item key="7"><Link to={'/admin/affiliation/arbitrator/affiliated'}>Déja
                                 affiliés</Link></Menu.Item>
-                            <Menu.Item key="8"><Link to={'/admin/affiliation/arbitrator/2'}>Demandes</Link></Menu.Item>
-                            <Menu.Item key="9"><Link to={'/admin/affiliation/arbitrator/3'}>Refusées</Link></Menu.Item>
+                            <Menu.Item key="8"><Link to={'/admin/affiliation/arbitrator/demand'}>Demandes</Link></Menu.Item>
+                            <Menu.Item key="9"><Link to={'/admin/affiliation/arbitrator/refused'}>Refusées</Link></Menu.Item>
                         </SubMenu>
                         <SubMenu key="sub4" icon={<UserOutlined/>} title="Athlètes">
-                            <Menu.Item key="12"><Link to={'/admin/affiliation/athlete/1'}>Déja
+                            <Menu.Item key="12"><Link to={'/admin/affiliation/athlete/affiliated'}>Déja
                                 affiliés</Link></Menu.Item>
-                            <Menu.Item key="13"><Link to={'/admin/affiliation/athlete/2'}>Demandes</Link></Menu.Item>
-{/*
-                            <Menu.Item key="14"><Link to={'/admin/affiliation/athlete/3'}>Refusées</Link></Menu.Item>
-*/}
+                            <Menu.Item key="13"><Link to={'/admin/affiliation/athlete/demand'}>Demandes</Link></Menu.Item>
+                            <Menu.Item key="14"><Link to={'/admin/affiliation/athlete/refused'}>Refusées</Link></Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub5" icon={<UserOutlined/>} title="Accompagnant">
+                            <Menu.Item key="15"><Link to={'/admin/attendant/accepted'}>Déja
+                                affiliés</Link></Menu.Item>
+                            <Menu.Item key="16"><Link to={'/admin/attendant/demand'}>Demandes</Link></Menu.Item>
+                            <Menu.Item key="17"><Link to={'/admin/attendant/refused'}>Refusées</Link></Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub6" icon={<UserOutlined/>} title="Supporteur">
+                            <Menu.Item key="18"><Link to={'/admin/supporter/accepted'}>Déja
+                                affiliés</Link></Menu.Item>
+                            <Menu.Item key="19"><Link to={'/admin/supporter/demand'}>Demandes</Link></Menu.Item>
+                            <Menu.Item key="20"><Link to={'/admin/supporter/refused'}>Refusées</Link></Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub7" icon={<UserOutlined/>} title="Publications">
+                            <Menu.Item key="21"><Link to={'/admin/posts/list'}>Liste des publications</Link></Menu.Item>
+                            <Menu.Item key="22"><Link to={'/admin/posts/add'}>Ajouter publication</Link></Menu.Item>
+                        </SubMenu>
+                        <SubMenu key="sub11" icon={<UserOutlined/>} title="Licences">
+                            <Menu.Item key="30"><div onClick={()=>this.handleExportLicence('athlete')}>Athlétes</div></Menu.Item>
+                            <Menu.Item key="31"><div onClick={()=>this.handleExportLicence('coach')}>Entraineur</div></Menu.Item>
+                            <Menu.Item key="32"><div onClick={()=>this.handleExportLicence('ruler')}>Dirigeant</div></Menu.Item>
                         </SubMenu>
                     </Menu>
                 </Sider>
                 <Layout className="site-layout" style={{overflow: 'hidden', maxHeight: '100vh'}}>
                     <Header className="site-layout-background" style={{padding: 0, maxHeight: '80vh',}}>
-                        <div style={{color:"red",display:'flex',justifyContent:'flex-end',paddingRight:20}}>
-                            <Link to={'/login'} onClick={()=>{
+                        <div style={{color: "red", display: 'flex', justifyContent: 'flex-end', paddingRight: 20}}>
+                            <Link to={'/login'} onClick={() => {
                                 localStorage.clear();
-                            }} style={{cursor:'pointer'}}>Déconnexion</Link>
+                            }} style={{cursor: 'pointer'}}>Déconnexion</Link>
                         </div>
                     </Header>
-                    <Content style={{margin: '0 16px'}}>
+                    <Content style={{margin: '0 16px',overflow:'auto'}}>
                         <div className="site-layout-background" style={{padding: 24, minHeight: 360}}>
                             {this.props.children}
                         </div>

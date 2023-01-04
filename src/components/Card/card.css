@@ -1,0 +1,66 @@
+.card {
+  display: flex;
+  position:relative;
+  float: left;
+  width: 29%;
+  min-width: 290px;
+  height: 220px;
+  background: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.25s;
+  flex-direction: column;
+  margin: 20px;
+  align-items: flex-start;
+  overflow: hidden;
+  box-sizing: content-box;
+  text-align: left;
+  border-radius: 10px;
+}
+.title_modal{
+    font-size: 14px;
+
+}
+.desc_modal{
+    font-size: 14px;
+}
+
+.card_title{
+  text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 2; /* number of lines to show */
+           line-clamp: 2; 
+   -webkit-box-orient: vertical;
+   max-lines: 2;
+   overflow: hidden;
+    color:white;
+    font-size: 14px;
+  
+}
+.card_desc{
+  text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+           line-clamp: 3; 
+   -webkit-box-orient: vertical;
+   max-lines: 3;
+   overflow: hidden;
+    color:white;
+    font-size: 14px;
+}
+.card:hover {
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.card .delete-btn {
+  cursor:pointer;
+  font-weight: bolder;
+  font-size: 1.2em;
+  position:absolute;
+  right: 7px;
+  top: 2px;
+  color: red;
+}
+.dRKPSs{
+  background-color: rgba(0, 0, 0, 0.2);
+}

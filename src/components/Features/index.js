@@ -1,11 +1,11 @@
-import React from "react";
-import "./Features.css";
-import calendario from "../../assets/calendario.svg";
-import ducha from "../../assets/ducha.svg";
-import pesa from "../../assets/pesa.svg";
-import salud from "../../assets/salud.svg";
+import React from 'react';
+import './Features.css';
+import calendario from '../../assets/calendario.svg';
+import ducha from '../../assets/ducha.svg';
+import pesa from '../../assets/pesa.svg';
+import salud from '../../assets/salud.svg';
 
-const Features = () => {
+function Features() {
   return (
     <section id="features" className="container m-3 center">
       <h2 className="m-3">Our Features</h2>
@@ -33,6 +33,6 @@ const Features = () => {
       </div>
     </section>
   );
-};
+}
 
 export default Features;

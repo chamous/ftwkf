@@ -1,5 +1,5 @@
 .hero {
-    background-image: url(../../images/slider1.png);
+
     height: 100vh;
     background-position: center center;
     background-repeat: no-repeat;
@@ -8,7 +8,13 @@
     display: flex;
     align-items: center;
     z-index: 1;
-    animation: single-animation 1s;
+    animation: fadeIn 1s;
+}
+.dRKPSs * {
+    pointer-events: none!important;
+}
+.hllMgd{
+    height: calc(100vh - 80px)!important;
 }
 
 .hero__wrapper {
@@ -32,6 +38,7 @@
     font-size: 4rem;
     margin-bottom: 1rem;
     animation-delay: 0.6s;
+    color: white;
 }
 
 .hero__wrapper h3 {

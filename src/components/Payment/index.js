@@ -1,15 +1,19 @@
 import React from 'react';
 import './Payment.css';
 import Paypal from '../Paypal';
-const Payment = ({paymentValue}) => {
-    return (
-        <section className="payment">
-            <h3>Payment</h3>
-            
-            <p>$ {paymentValue}</p>
-            <Paypal paymentValue={paymentValue}/>
-        </section>
-    )
+
+function Payment({ paymentValue }) {
+  return (
+    <section className="payment">
+      <h3>Payment</h3>
+
+      <p>
+        $
+        {paymentValue}
+      </p>
+      <Paypal paymentValue={paymentValue} />
+    </section>
+  );
 }
 
-export default Payment
+export default Payment;

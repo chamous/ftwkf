@@ -1,37 +1,85 @@
 import Interceptor from "../config/interceptor";
-import {adminServicesUrls} from "../config/api-constants";
-
+import {adminServicesUrls, clubUrls} from "../config/api-constants";
+import axios from 'axios';
 class AdminServices {
-    static getCoachAffiliations = ({type:type}) => Interceptor(
+    static getCoachAffiliations = ({type:type,cin:cin,page:page}) => Interceptor(
         {
             url: adminServicesUrls.getCoachAffiliationsEndPoint,
             params: {
-                type: type
+                type: type,
+                search: cin,
+                page:page
             }
         });
-    static getArbitratorAffiliations = ({type:type}) => Interceptor(
+
+    static getSupporters = ({type:type,search:search,page:page}) => Interceptor(
+        {
+            url: adminServicesUrls.getSupporters,
+            params: {
+                type: type,
+                search: search,
+                page:page
+            }
+        });
+    static getArbitratorAffiliations = ({type:type,cin:cin,page:page}) => Interceptor(
         {
             url: adminServicesUrls.getArbitratorAffiliationsEndPoint,
             params: {
-                type: type
+                type: type,
+                search: cin,
+                page:page
             }
         }
     )
-    static getClubsAffiliations = ({type:type}) => Interceptor(
+    static exportAthlete = () => Interceptor(
         {
-            url: adminServicesUrls.getClubAffiliationsEndPoint,
-            params: {
-                type: type
-            }
+            url: adminServicesUrls.exportAthlete,
+            method: 'GET',
+            responseType: 'blob',
+            headers: {'Authorization': `Bearer ${localStorage.getItem('token')}` },
         }
     )
 
-    static updateAffiliationCoach = (id,status) => Interceptor({
-        url: adminServicesUrls.updateCoachAffiliation(id),
-        method:'PUT',
-        params: {
-            status: status
-        },
+    static exportCoach = () => Interceptor(
+        {
+            url: adminServicesUrls.exportCoach,
+            method:'GET',
+            responseType: 'blob',
+            headers: {'Authorization': `Bearer ${localStorage.getItem('token')}` },
+        }
+    )
+    static exportRuler = () => Interceptor(
+        {
+            url: adminServicesUrls.exportRuler,
+            method:'GET',
+            responseType: 'blob',
+            headers: {'Authorization': `Bearer ${localStorage.getItem('token')}` },
+        }
+    )
+    static getClubsAffiliations = ({type:type,cin:cin,page:page}) =>
+        Interceptor(
+            {
+                url: adminServicesUrls.getClubAffiliationsEndPoint,
+                params: {
+                    type: type,
+                    search: cin,
+                    page:page
+                }
+            }
+        )
+    static getPosts = () => Interceptor(
+        {
+            url: adminServicesUrls.addPublication,
+        }
+    )
+
+    static acceptCoach = (id) => Interceptor({
+        url: adminServicesUrls.acceptCoach(id),
+        method:'POST',
+    })
+    static refuseCoach = (id) => Interceptor({
+        url: adminServicesUrls.refuseCoach(id),
+        method:'POST',
     })
     static updateAffiliationClub = (id,status) => Interceptor({
         url: adminServicesUrls.updateClubAffiliation(id),
@@ -45,6 +93,69 @@ class AdminServices {
         url: adminServicesUrls.activateAthlete(id),
         method:'POST',
     })
+    static refuseAthlete = (id) => Interceptor({
+        url: adminServicesUrls.refuseAthlete(id),
+        method:'POST',
+    })
+
+    static activateAttendant = (id) => Interceptor({
+        url: adminServicesUrls.acceptAttendant(id),
+        method:'POST',
+    })
+    static refuseAttendant = (id) => Interceptor({
+        url: adminServicesUrls.refuseAttendant(id),
+        method:'POST',
+    })
+
+    static getAttendantAdmin = ({type:type,cin:cin,page:page}) =>
+        Interceptor(
+            {
+                url:clubUrls.getAttendants,
+                params: {
+                    type: type,
+                    search: cin,
+                    page:page
+                }
+            }
+        )
+
+        static getSupporterAdmin = ({type:type,cin:cin,page:page}) =>
+        Interceptor(
+            {
+                url:clubUrls.getAttendants,
+                params: {
+                    type: type,
+                    search: cin,
+                    page:page
+                }
+            }
+        )
+    static addPost = (
+        {
+            title,
+            description,
+            file,
+        }
+    )  => new Promise((resolve, reject) =>  {
+        const bodyFormData = new FormData();
+        bodyFormData.append('title', title);
+        bodyFormData.append('description', description);
+        bodyFormData.append('file', file);
+        Interceptor({
+            url: adminServicesUrls.addPublication,
+            method: 'POST',
+            data: bodyFormData,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+            .then(async (response) => {
+                resolve(response);
+            })
+            .catch((error) => {
+                reject(error);
+            });
+    });
     static addClub = (
         {
             specialty,
@@ -121,6 +232,14 @@ class AdminServices {
     })
     static updateAffiliationArbitrator = (id,status) => Interceptor({
         url: adminServicesUrls.updateArbitratorAffiliation(id),
+        method:'PUT',
+        params: {
+            status: status
+        },
+    })
+
+    static updateSupporter = (id,status) => Interceptor({
+        url: adminServicesUrls.updateAffiliationSupporter(id),
         method:'PUT',
         params: {
             status: status

@@ -3,24 +3,22 @@
     animation: fadeIn 1000ms;
     position: sticky;
     top: 0;
-    margin-top: -80px;
     z-index: 1000;
+    display: flex;
+    justify-content: center;
 }
 
 .navbar__wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 968px;
-    margin-right: auto;
-    margin-left: auto;
+    max-width: 90%;
     height: 80px;
-    padding: 0 2rem;
 }
 
 .navbar__items {
     padding: 0;
-    width: 100%;
+    width: 100vw!important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,19 +42,29 @@
     color: white;
     font-weight: 700;
     text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
 }
 
 .navbar__title1 {
-    font-size: 20px;
+    font-size: 25px;
     color: rgb(218, 22, 22);
     font-weight: 700;
     text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.navbar__link a:hover {
+    transition: all 100ms ease-out!important;
+    color: var(--global-company-color)!important;
 }
 
 .navbar__link {
     margin-left: 24px;
     cursor: pointer;
-    color: white !important;
+    color:white;
 }
 
 .navbar__links a {
@@ -131,6 +139,14 @@
     background-color: #fff;
     color: var(--global-company-color);
 }
+.navbar__items img {
+    width: 90px;
+    margin-right: 10px;
+}
+dl, ol, ul {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 
 
 /*Animations*/
@@ -139,12 +155,28 @@
     0% {
         opacity: 0;
     }
-
     100% {
         opacity: 1;
     }
 }
+@media screen and (max-width: 510px) {
+    .navbar__items img {
+        width: 70px;
 
+    }
+    .navbar__title {
+        font-size: 18px;
+        
+        
+    }
+    
+    .navbar__title1 {
+        font-size: 18px;
+    
+    }
+    
+    
+}
 @media screen and (max-width: 768px) {
     .navbar__burger-icon {
         display: block;
@@ -156,17 +188,7 @@
         cursor: pointer;
         color: #fff;
     }
-
     .navbar__link {
         display: none;
     }
-
-    .navbar__title , .navbar__title1{
-        font-size:1rem;
-    }
-}
-
-
-.sidebar__options a {
-    color: white;
 }

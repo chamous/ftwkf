@@ -1,6 +1,9 @@
 svg {
     margin-bottom: 80px;
 }
+p{
+    margin:0;
+}
 
 .btn {
     cursor: pointer;

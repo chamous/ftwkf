@@ -23,6 +23,8 @@ export const affiliationCoach = (
     gradeCoach,
     diplomeUrl,
     certificationUrl,
+    paymentUrl,
+    image
   },
 ) => new Promise((resolve, reject) => {
   const bodyFormData = new FormData();
@@ -46,6 +48,9 @@ export const affiliationCoach = (
   bodyFormData.append('technical_grade', technicalGrade);
   bodyFormData.append('date_obtained', dateObtained);
   bodyFormData.append('grade_coach', gradeCoach);
+  bodyFormData.append('payment_url', paymentUrl);
+  bodyFormData.append('image', image);
+
   Interceptor({
     url: affilationUrl.coach,
     method: 'POST',
@@ -84,6 +89,7 @@ export const affiliationArbitrator = (
     gradeArbitrator,
     diplomeUrl,
     certificationUrl,
+    paymentUrl
   },
 ) => new Promise((resolve, reject) => {
   const bodyFormData = new FormData();
@@ -107,6 +113,7 @@ export const affiliationArbitrator = (
   bodyFormData.append('technical_grade', technicalGrade);
   bodyFormData.append('date_obtained', dateObtained);
   bodyFormData.append('grade_arbitrator', gradeArbitrator);
+  bodyFormData.append('payment_url', paymentUrl);
   Interceptor({
     url: affilationUrl.arbitrator,
     method: 'POST',
@@ -159,6 +166,8 @@ export const affiliationClub = (
     phoneRuler,
     diplomeUrl,
     certificateUrl,
+    file,
+    imageRuler
   },
 ) => new Promise((resolve, reject) => {
   const bodyFormData = new FormData();
@@ -169,6 +178,7 @@ export const affiliationClub = (
   bodyFormData.append('delegation', delegation);
   bodyFormData.append('email', email);
   bodyFormData.append('postal_code', postalCode);
+  bodyFormData.append('image_ruler', imageRuler);
   bodyFormData.append('phone', phone);
   bodyFormData.append('fax', fax);
   bodyFormData.append('specialty', speciality);
@@ -196,6 +206,7 @@ export const affiliationClub = (
   bodyFormData.append('phone_ruler', phoneRuler);
   bodyFormData.append('diplome_url', diplomeUrl);
   bodyFormData.append('certificate_url', certificateUrl);
+  bodyFormData.append('payment_url', file);
   Interceptor({
     url: affilationUrl.club,
     method: 'POST',
@@ -211,6 +222,43 @@ export const affiliationClub = (
       reject(error);
     });
 });
+export const affiliationSupporter = (
+    {
+        firstName,
+        lastName,
+        email,
+        cinNumber,
+        governorate,
+        image,
+        file,
+        extra_file
+    },
+) => new Promise((resolve, reject) => {
+    const bodyFormData = new FormData();
+    bodyFormData.append('first_name', firstName);
+    bodyFormData.append('last_name', lastName);
+    bodyFormData.append('cin_number', cinNumber);
+    bodyFormData.append('email', email);
+    bodyFormData.append('governorate', governorate);
+    bodyFormData.append('image', image);
+    bodyFormData.append('file', file);
+    bodyFormData.append('extra_file', extra_file);
+    Interceptor({
+        url: affilationUrl.supporter,
+        method: 'POST',
+        data: bodyFormData,
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
+        .then(async (response) => {
+            resolve(response);
+        })
+        .catch((error) => {
+            reject(error);
+        });
+});
+
 
 export const getGov = () => new Promise((resolve, reject) => {
   Interceptor({

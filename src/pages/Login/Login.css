@@ -10,6 +10,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  width: 300px;
 }
 .registration__form * {
   margin-bottom: 8px;

@@ -1,7 +1,9 @@
 svg {
     margin-bottom: 80px;
 }
-
+.ant-layout-content{
+    overflow-y: auto!important;
+}
 .btn {
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
