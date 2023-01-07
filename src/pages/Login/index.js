@@ -42,7 +42,7 @@ const Login = () => {
             <section className="container registration">
                 <h2>Se Connecter</h2>
                 <p style={{marginBottom:30}}>
-                    Veuillez vous connecter à votre compte
+                    Veuillez vous connecter 
                 </p>
                 <form className="registration__form" onSubmit={handleSubmit}>
                     <input
